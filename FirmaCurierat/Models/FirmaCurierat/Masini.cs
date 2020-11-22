@@ -22,7 +22,7 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;
             set;
         }
-        public string marca
+        public string? marca
         {
             get;
             set;

@@ -18,13 +18,13 @@ namespace FirmaCurierat.Models.FirmaCurierat
             set;
         }
 
-        public string nume
+        public string? nume
         {
             get;
             set;
 
         }
-        public string prenume
+        public string? prenume
         {
             get;
             set;
@@ -40,6 +40,11 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;
             set;
 
+        }
+        public int? an_angajare
+        {
+            get;
+            set;
         }
     }
 }

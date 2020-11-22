@@ -12,7 +12,7 @@
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.Calendars
 @using Syncfusion.Blazor.Popups
-
+@inherits FirmaCurierat.Pages.QuickActionsComponent
 
 
 
@@ -49,11 +49,11 @@
                     <ContentTemplate>
                         <div style="margin-bottom: 1rem" class="row">
                             <div class="col-md-2">
-                                <RadzenLabel Component="view_employee" style="font-weight: 500; font-size: medium;" Text="Click here to to view employees: ">
+                                <RadzenLabel Component="view_employee" style="font-weight: 500; font-size: medium;" Text="Click here to to view drivers: ">
                                 </RadzenLabel>
                             </div>
-                            <div class="col-md-1">
-                                <SfButton CssClass="e-success" IconCss="e-icons e-info">View</SfButton>
+                            <div class="col-md-1" style="margin-left:-30px;">
+                                <SfButton OnClick="@viewDrivers" CssClass="e-success" IconCss="e-icons e-info">View</SfButton>
                             </div>
                         </div>
                     </ContentTemplate>

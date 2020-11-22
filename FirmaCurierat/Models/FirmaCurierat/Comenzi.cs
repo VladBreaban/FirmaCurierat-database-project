@@ -23,12 +23,12 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;
             set;
         }
-        public int? id_dispecer
+        public int id_dispecer
         {
             get;
             set;
         }
-        public int? id_client
+        public int id_client
         {
             get;
             set;

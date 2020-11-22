@@ -17,7 +17,7 @@ namespace FirmaCurierat.Models
             get;
             set;
         }
-        public string nume
+        public string? nume
         {
             get;
             set;
