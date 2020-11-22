@@ -1,0 +1,139 @@
+﻿@page "/quickactions"
+
+@using Radzen
+@using Radzen.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Spinner
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.Lists
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Popups
+
+
+
+
+<br />
+<br />
+<RadzenContent Container="main">
+    <ChildContent>
+        <RadzenHeading Size="H1" Text="Welcome to the fastest delivery company">
+        </RadzenHeading>
+        <RadzenHeading Size="H3" Text="There is some quick actions:">
+        </RadzenHeading>
+        <br />
+        <br />
+        <br />
+
+
+        <SfAccordion>
+            <AccordionItems>
+                <AccordionItem Header="Register an employee" IconCss="e-icons e-timelinemonth" Expanded=true>
+                    <ContentTemplate>
+                        <div style="margin-bottom: 1rem" class="row">
+                            <div class="col-md-2">
+                                <RadzenLabel Component="add_employee" style="font-weight: 500; font-size: medium;" Text="Click here to add an employee: ">
+                                </RadzenLabel>
+                            </div>
+                            <div class="col-md-1">
+                                <SfButton CssClass="e-primary" IconCss="e-icons e-timelinemonth">Add</SfButton>
+                            </div>
+                        </div>
+
+                    </ContentTemplate>
+                </AccordionItem>
+                <AccordionItem Header="View employees" IconCss="e-icons e-employee">
+                    <ContentTemplate>
+                        <div style="margin-bottom: 1rem" class="row">
+                            <div class="col-md-2">
+                                <RadzenLabel Component="view_employee" style="font-weight: 500; font-size: medium;" Text="Click here to to view employees: ">
+                                </RadzenLabel>
+                            </div>
+                            <div class="col-md-1">
+                                <SfButton CssClass="e-success" IconCss="e-icons e-info">View</SfButton>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </AccordionItem>
+                <AccordionItem Header="Register a new order" IconCss="e-icons e-order">
+                    <ContentTemplate>
+                        <div style="margin-bottom: 1rem" class="row">
+                            <div class="col-md-2">
+                                <RadzenLabel Component="add_order" style="font-weight: 500; font-size: medium;" Text="Click here to add a new order">
+                                </RadzenLabel>
+                            </div>
+                            <div class="col-md-1">
+                                <SfButton CssClass="e-primary" IconCss="e-icons  e-timelinemonth">Add</SfButton>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </AccordionItem>
+                <AccordionItem Header="Distribute order to drivers" IconCss="e-icons e-drivers">
+                    <ContentTemplate>
+                        <div style="margin-bottom: 1rem" class="row">
+                            <div class="col-md-2">
+                                <RadzenLabel Component="distribute_orders" style="font-weight: 500; font-size: medium;" Text="Click here to distribute orders">
+                                </RadzenLabel>
+                            </div>
+                            <div class="col-md-1">
+                                <SfButton CssClass="e-primary">Distribute</SfButton>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </AccordionItem>
+                <AccordionItem Header="General informations about the company" IconCss="e-icons e-info">
+                    <ContentTemplate>
+                        <div style="margin-bottom: 1rem" class="row">
+                            <div class="col-md-2">
+                                <RadzenLabel Component="company_info" style="font-weight: 500; font-size: medium;" Text="Click here to distribute orders">
+                                </RadzenLabel>
+                            </div>
+                            <div class="col-md-1">
+                                <SfButton CssClass="e-success" IconCss="e-icons e-info">Info</SfButton>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </AccordionItem>
+            </AccordionItems>
+        </SfAccordion>
+    </ChildContent>
+</RadzenContent>
+
+<style>
+    .e-timelinemonth:before {
+        content: '\e7d9';
+        color: black;
+        position: relative top:3px
+    }
+
+    .e-order:before {
+        content: '\e73e';
+        color: black;
+        position: relative top:3px
+    }
+
+    .e-employee:before {
+        content: '\e72a';
+        color: black;
+        position: relative top:3px
+    }
+
+    .e-drivers:before {
+        content: '\e7c6';
+        color: black;
+        position: relative top:3px
+    }
+
+    .e-info:before {
+        content: '\e729';
+        color: black;
+        position: relative top:3px
+    }
+
+    .e-plus-icon::before {
+        content: '\e729'
+    }
+</style>
