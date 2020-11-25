@@ -15,32 +15,35 @@
 @inherits FirmaCurierat.Pages.EmployeesComponent
 <RadzenContent Container="main">
     <ChildContent>
+        <RadzenHeading Size="H3" Text="Drivers">
+        </RadzenHeading>
+        <hr />
         <div class="row">
-            <div class="col-md-12">
-               
-                        <Syncfusion.Blazor.Cards.SfCard>
+            <div class="col-md-12" style="margin-top:100px;">
 
-                            <SfGrid  DataSource="@drivers" ShowColumnChooser="true"  AllowSorting="true" AllowFiltering="true" AllowResizing="true" AllowPaging="true"
-                                    AllowSelection="true">
+                <Syncfusion.Blazor.Cards.SfCard>
+
+                    <SfGrid DataSource="@drivers" ShowColumnChooser="true" AllowSorting="true" AllowFiltering="true" AllowResizing="true" AllowPaging="true"
+                            AllowSelection="true">
 
 
 
-                                <GridPageSettings PageCount="6" PageSize="4"></GridPageSettings>
-                                <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Single"></GridSelectionSettings>
-                                <GridColumns>
-                                    <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.nume) AutoFit="true" HeaderText="Name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.prenume) AutoFit="true" HeaderText="Surname" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.id_masina) AutoFit="true" HeaderText="Car Id" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
-                                    <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.an_angajare) AutoFit="true" HeaderText="Employment year" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120">
-                                  
-                                    </GridColumn>
-                                  
-                                  
-                                    
-                                </GridColumns>
-                            </SfGrid>
-                        </Syncfusion.Blazor.Cards.SfCard>
-                   
+                        <GridPageSettings PageCount="6" PageSize="4"></GridPageSettings>
+                        <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Single"></GridSelectionSettings>
+                        <GridColumns>
+                            <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.nume) AutoFit="true" HeaderText="Name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+                            <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.prenume) AutoFit="true" HeaderText="Surname" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+                            <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.id_masina) AutoFit="true" HeaderText="Car Id" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+                            <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.an_angajare) AutoFit="true" HeaderText="Employment year" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120">
+
+                            </GridColumn>
+                     
+
+
+                        </GridColumns>
+                    </SfGrid>
+                </Syncfusion.Blazor.Cards.SfCard>
+
             </div>
         </div>
     </ChildContent>

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -76,5 +77,16 @@ namespace FirmaCurierat.Pages
 
 
         }
+        public string usernameNew = "";
+        public string passNew = "";
+        public async Task registerUser(MouseEventArgs args)
+        {
+
+            UriHelper.NavigateTo("/register");
+
+
+        }
     }
+    
 }
+

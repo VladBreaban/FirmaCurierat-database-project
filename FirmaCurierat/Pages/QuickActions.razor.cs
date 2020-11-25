@@ -20,7 +20,7 @@ namespace FirmaCurierat.Pages
         public async Task viewDrivers(MouseEventArgs args)
         {
             UriHelper.NavigateTo("/employees");
-            var dialogResult = await DialogService.OpenAsync<Employees>("Drivers");
+         //   var dialogResult = await DialogService.OpenAsync<Employees>("Drivers");
         }
     }
 }

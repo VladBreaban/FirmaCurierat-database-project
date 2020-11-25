@@ -66,8 +66,17 @@
                 </CardContent>
                 <CardFooter>
                     <CardFooterContent>
-                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Text="Log In" Click="@ValidateUser">
-                        </RadzenButton>
+                        <div style="margin-bottom: 1rem" class="row">
+                            <div class="col-md-2 align-items-center d-flex" style="margin-right:-5px; margin-left:150px;">
+                                <RadzenButton ButtonStyle="ButtonStyle.Danger" Text="Log In" Click="@ValidateUser">
+                                </RadzenButton>
+                            </div>
+                            <div class="col-md-2" style="">
+                                <RadzenButton ButtonType="Radzen.ButtonType.Button" ButtonStyle="ButtonStyle.Danger" Text="Register" Click="@registerUser">
+                                </RadzenButton>
+                            </div>
+                        </div>
+                       
                     </CardFooterContent>
                 </CardFooter>
             </SfCard>
