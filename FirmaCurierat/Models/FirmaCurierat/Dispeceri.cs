@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FirmaCurierat.Models
+namespace FirmaCurierat.Models.FirmaCurierat
 {
     [Table("dispeceri", Schema = "dbo")]
     public class Dispeceri

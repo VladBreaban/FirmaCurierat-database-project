@@ -20,7 +20,8 @@ namespace FirmaCurierat.Pages
         [Inject]
         protected DialogService DialogService { get; set; }
 
-        
+        [Inject]
+        protected NavigationManager UriHelper { get; set; }
 
         [Inject]
         protected NotificationService NotificationService { get; set; }
@@ -48,6 +49,14 @@ namespace FirmaCurierat.Pages
             {
                 NotificationService.Notify(NotificationSeverity.Error, $"Error", $"Unable to delete Mail");
             }
+        }
+
+        protected async Task goToAdd(MouseEventArgs args)
+        {
+            // var dialogResult = await DialogService.OpenAsync<AddDriver>("Register", null);
+
+            UriHelper.NavigateTo("/addDriver");
+            await InvokeAsync(() => { StateHasChanged(); });
         }
     }
 }

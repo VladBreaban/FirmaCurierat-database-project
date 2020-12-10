@@ -30,12 +30,12 @@ namespace FirmaCurierat.Models.FirmaCurierat
             set;
 
         }
-        public int? id_masina
+        public int id_masina
         {
             get;
             set;
         }
-        public int? id_dispecer
+        public int id_dispecer
         {
             get;
             set;
