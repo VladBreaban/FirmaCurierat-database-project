@@ -58,7 +58,8 @@ namespace FirmaCurierat
             {
                 o.MaximumReceiveMessageSize = 10 * 1024 * 1024;
             });
-
+            services.AddRazorPages();
+            services.AddServerSideBlazor().AddCircuitOptions(opt => { opt.DetailedErrors = true; });
             services.AddSyncfusionBlazor();
             services.AddAntDesign();
             services.AddScoped<DialogService>();

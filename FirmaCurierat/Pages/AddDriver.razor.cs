@@ -55,7 +55,7 @@ namespace FirmaCurierat.Pages
         {
             try
             {
-                 if(driver.nume == null || driver.prenume == null || driver.id_masina == null || driver.id_sofer == null)
+                 if(driver.nume == null || driver.prenume == null || driver.id_masina == null || driver.id_dispecer == null)
                 {
                     NotificationService.Notify(NotificationSeverity.Success, $"All field are required!");
                     return;
