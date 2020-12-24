@@ -15,13 +15,13 @@
 @using Syncfusion.Blazor.Popups
 @using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Notifications
-<RadzenHeading Size="H1" Text="Register new driver" Style="font-size:large;margin-top:150px; font-weight:bold;">
-    <div>
-        <hr />
-    </div>
+<RadzenHeading Size="H5" Text="Register new driver" Style="font-size:x-large;margin-top:30px; font-weight:bold;">
+    
+        <hr>
+    
 
 </RadzenHeading>
-<RadzenCard Style="margin-top: 20px;">
+<RadzenCard Style="margin-top:70px;">
     <RadzenContent Container="main">
         <ChildContent>
             <div class="row">
@@ -31,10 +31,10 @@
                             <DataAnnotationsValidator />
                             <div style="margin-bottom: 1rem" class="row">
                                 <div class="col-md-3">
-                                    <RadzenLabel Component="Nume" style="font-weight: 500; font-size: medium;" Text="Name">
+                                    <RadzenLabel Component="Nume" style="font-weight: bold; font-size: medium;" Text="Name">
                                     </RadzenLabel>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-8" style="margin-left:-100px;">
                                     <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(driver.nume)" Name="name">
                                     </RadzenTextBox>
 
@@ -42,10 +42,10 @@
                             </div>
                             <div style="margin-bottom: 1rem" class="row">
                                 <div class="col-md-3">
-                                    <RadzenLabel Component="surname" style="font-weight: 500; font-size: medium;" Text="Surname">
+                                    <RadzenLabel Component="surname" style="font-weight: bold; font-size: medium;" Text="Surname">
                                     </RadzenLabel>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-8" style="margin-left:-100px;">
                                     <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(driver.prenume)" Name="surname">
                                     </RadzenTextBox>
 
@@ -53,12 +53,13 @@
                             </div>
                             <div style="margin-bottom: 1rem" class="row">
                                 <div class="col-md-3">
-                                    <RadzenLabel Component="srv_mail_from" style="font-weight: 500; font-size: medium;" Text="Select a car">
+
+                                    <RadzenLabel Component="srv_mail_from" style="font-weight: bold; font-size: medium;" Text="Select a car">
                                     </RadzenLabel>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="margin-left:-100px;">
 
-                                    <Syncfusion.Blazor.DropDowns.SfDropDownList TValue="int" TItem="Models.FirmaCurierat.Masini" @bind-Value="@driver.id_masina" DataSource="@carsList">
+                                    <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a car..." TValue="int" TItem="Models.FirmaCurierat.Masini" @bind-Value="@driver.id_masina" DataSource="@carsList" Width="380px">
                                         <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.Masini"></DropDownListEvents>
                                         <DropDownListFieldSettings Text="marca" Value="id_masina"></DropDownListFieldSettings>
                                     </Syncfusion.Blazor.DropDowns.SfDropDownList>
@@ -66,11 +67,11 @@
                             </div>
                             <div style="margin-bottom: 1rem" class="row">
                                 <div class="col-md-3">
-                                    <RadzenLabel Component="srv_mail_username" style="font-weight: 500; font-size: medium;" Text="Select a coordinator ">
+                                    <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Select a coordinator ">
                                     </RadzenLabel>
                                 </div>
-                                <div class="col-md-3">
-                                    <Syncfusion.Blazor.DropDowns.SfDropDownList TValue="int" TItem="Models.FirmaCurierat.Dispeceri" @bind-Value="@driver.id_dispecer" DataSource="@coordsList">
+                                <div class="col-md-3" style="margin-left:-100px;">
+                                    <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a coordinator..." TValue="int" TItem="Models.FirmaCurierat.Dispeceri" @bind-Value="@driver.id_dispecer" DataSource="@coordsList" Width="380px;">
                                         <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.Dispeceri"></DropDownListEvents>
                                         <DropDownListFieldSettings Text="nume" Value="id_dispecer"></DropDownListFieldSettings>
                                     </Syncfusion.Blazor.DropDowns.SfDropDownList>
@@ -80,12 +81,12 @@
 
 
                             <div style="margin-bottom: 1rem" class="row">
-                                <div class="col-md-2 align-items-center d-flex" style="margin-right:-5px; margin-left:150px;">
-                                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Text="Register Now" >
+                                <div class="col-md-2 align-items-center d-flex" style="margin-right:-5px; margin-left:550px;">
+                                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Text="Register Now" Click="@register">
                                     </RadzenButton>
                                 </div>
-                                <div class="col-md-2" style="">
-                                    <RadzenButton ButtonType="Radzen.ButtonType.Button" ButtonStyle="ButtonStyle.Danger" Text="Back" >
+                                <div class="col-md-2" style=" margin-left:-140px">
+                                    <RadzenButton ButtonType="Radzen.ButtonType.Button" ButtonStyle="ButtonStyle.Danger" Text="Back" Click="@back">
                                     </RadzenButton>
                                 </div>
                             </div>

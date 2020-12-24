@@ -122,11 +122,7 @@ namespace FirmaCurierat
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //    app.UseCrystalQuartz(
-            //new RemoteSchedulerProvider
-            //{
-            //    SchedulerHost = "tcp://localhost:1099/QuartzScheduler"
-            //});
+       
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
