@@ -39,5 +39,9 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;set;
         }
 
+        public int id_comanda
+        {
+            get;set;
+        }
     }
 }
