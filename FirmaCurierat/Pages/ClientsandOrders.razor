@@ -18,6 +18,7 @@
 
 <RadzenContent Container="main">
     <ChildContent>
+       
         <RadzenHeading Size="H1" Text="Manage your drivers" Style="margin-top:60px;">
         </RadzenHeading>
         <div class="row">
@@ -25,7 +26,7 @@
                 @*<RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Size="Radzen.ButtonSize.Small" Text="Add mail server" Click="@addMailSetup">
                     </RadzenButton>*@
                 <MatThemeProvider Theme="@tema">
-                    <MatButton  Raised="true" style="margin-bottom: 10px" Icon="person_pin">Register an orders</MatButton>
+                    <MatButton OnClick="@goToAdd"  Raised="true" style="margin-bottom: 10px" Icon="person_pin">Register an orders</MatButton>
                 </MatThemeProvider>
                 <hr />
                 <br />

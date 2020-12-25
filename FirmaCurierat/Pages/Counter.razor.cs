@@ -21,7 +21,7 @@ namespace FirmaCurierat.Pages
         protected DialogService DialogService { get; set; }
 
         [Inject]
-        protected NavigationManager UriHelper { get; set; }
+        public NavigationManager UriHelper { get; set; }
 
         [Inject]
         protected NotificationService NotificationService { get; set; }
@@ -53,8 +53,7 @@ namespace FirmaCurierat.Pages
 
         protected async Task goToAdd(MouseEventArgs args)
         {
-            // var dialogResult = await DialogService.OpenAsync<AddDriver>("Register", null);
-
+           
             UriHelper.NavigateTo("/addDriver");
             await InvokeAsync(() => { StateHasChanged(); });
         }

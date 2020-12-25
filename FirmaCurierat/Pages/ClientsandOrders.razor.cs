@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FirmaCurierat.Pages
 {
-    public class ClientsandOrdersComponent : ComponentBase
+    public partial class ClientsandOrdersComponent : ComponentBase
     {
         public List<Models.FirmaCurierat.Clienti> clients;
 
@@ -20,7 +21,7 @@ namespace FirmaCurierat.Pages
         protected DialogService DialogService { get; set; }
 
         [Inject]
-        protected NavigationManager UriHelper { get; set; }
+        protected NavigationManager NavigationManager { get; set; }
 
         [Inject]
         protected NotificationService NotificationService { get; set; }
@@ -32,6 +33,12 @@ namespace FirmaCurierat.Pages
             clients = new List<FirmaCurierat.Models.FirmaCurierat.Clienti>();
             string sqlCommand = "select * from  clienti";
             clients = await dataHelper.LoadData<FirmaCurierat.Models.FirmaCurierat.Clienti, dynamic>(sqlCommand, new { }, ConnectionString);
+        }
+        public async Task goToAdd(MouseEventArgs args)
+        {
+            
+            NavigationManager.NavigateTo("/addOrdersAndClients");
+            await InvokeAsync(() => { StateHasChanged(); });
         }
     }
 }
