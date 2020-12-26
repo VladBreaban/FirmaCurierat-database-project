@@ -25,66 +25,114 @@
         <ChildContent>
             <div class="row">
                 <div class="col-md-12">
-                  
-              
-                            <div style="margin-bottom: 1rem" class="row">
-                                <div class="col-md-3">
-                                    <RadzenLabel Component="Nume" style="font-weight: bold; font-size: medium;" Text="Name">
-                                    </RadzenLabel>
-                                </div>
-                                <div class="col-md-8" style="margin-left:-100px;">
-                                    <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.nume)" Name="name">
-                                    </RadzenTextBox>
-
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1rem" class="row">
-                                <div class="col-md-3">
-                                    <RadzenLabel Component="surname" style="font-weight: bold; font-size: medium;" Text="Surname">
-                                    </RadzenLabel>
-                                </div>
-                                <div class="col-md-8" style="margin-left:-100px;">
-                                    <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.prenume)" Name="surname">
-                                    </RadzenTextBox>
-
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1rem" class="row">
-                                <div class="col-md-3">
-
-                                    <RadzenLabel Component="srv_mail_from" style="font-weight: bold; font-size: medium;" Text="Mail">
-                                    </RadzenLabel>
-                                </div>
-                                <div class="col-md-3" style="margin-left:-100px;">
-                                    <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.mail)" Name="surname">
-                                    </RadzenTextBox>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1rem" class="row">
-                                <div class="col-md-3">
-                                    <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Complete adress ">
-                                    </RadzenLabel>
-                                </div>
-                                <div class="col-md-3" style="margin-left:-100px;">
-
-                                    <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.adresa)" Name="surname">
-                                    </RadzenTextBox>
-                                </div>
-                            </div>
 
 
-                            <div style="margin-bottom: 1rem" class="row">
-                                <div class="col-md-2 align-items-center d-flex" style="margin-right:-5px; margin-left:550px;">
-                                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Text="Register Now" >
-                                    </RadzenButton>
-                                </div>
-                                <div class="col-md-2" style=" margin-left:-80px">
-                                    <RadzenButton ButtonType="Radzen.ButtonType.Button" ButtonStyle="ButtonStyle.Danger" Text="Back" >
-                                    </RadzenButton>
-                                </div>
-                            </div>
-                     
-                    
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Component="Nume" style="font-weight: bold; font-size: medium;" Text="Client Name">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-8" style="margin-left:-100px;">
+                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.nume)" Name="name">
+                            </RadzenTextBox>
+
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Component="surname" style="font-weight: bold; font-size: medium;" Text="Client Surname">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-8" style="margin-left:-100px;">
+                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.prenume)" Name="surname">
+                            </RadzenTextBox>
+
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+
+                            <RadzenLabel Component="srv_mail_from" style="font-weight: bold; font-size: medium;" Text="Client Mail">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.mail)" Name="surname">
+                            </RadzenTextBox>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Complete adress ">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+
+                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.adresa)" Name="surname">
+                            </RadzenTextBox>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Delivery Date">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+
+                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(comanda.data_livrare)" Name="surname">
+                            </RadzenTextBox>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="AWB:">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+
+                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(comanda.awb)" Name="surname">
+                            </RadzenTextBox>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Responsible:">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+
+                            <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a coordinator..." TValue="int" TItem="Models.FirmaCurierat.Dispeceri" @bind-Value="@comanda.id_dispecer" DataSource="@coordsList" Width="380px;">
+                                <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.Dispeceri"></DropDownListEvents>
+                                <DropDownListFieldSettings Text="nume" Value="id_dispecer"></DropDownListFieldSettings>
+                            </Syncfusion.Blazor.DropDowns.SfDropDownList>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
+                            <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Order Type:">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+
+                            <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a type..." TValue="int" TItem="Models.FirmaCurierat.TipComenzi" @bind-Value="@tip_selected.id_tip" DataSource="@tip" Width="380px;">
+                                <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.TipComenzi"></DropDownListEvents>
+                                <DropDownListFieldSettings Text="tip" Value="id_tip"></DropDownListFieldSettings>
+                            </Syncfusion.Blazor.DropDowns.SfDropDownList>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-2 align-items-center d-flex" style="margin-right:-5px; margin-left:550px;">
+                            <RadzenButton Click="@registerOrder" ButtonStyle="ButtonStyle.Danger" Text="Register Now">
+                            </RadzenButton>
+                        </div>
+                        <div class="col-md-2" style=" margin-left:-80px">
+                            <RadzenButton ButtonType="Radzen.ButtonType.Button" ButtonStyle="ButtonStyle.Danger" Text="Back">
+                            </RadzenButton>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </ChildContent>

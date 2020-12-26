@@ -12,7 +12,7 @@ namespace FirmaCurierat.Models.FirmaCurierat
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? id_tip
+        public int id_tip
         {
             get;
             set;

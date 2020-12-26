@@ -18,7 +18,7 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;
             set;
         }
-        public DateTime data_livrare
+        public string data_livrare
         {
             get;
             set;
