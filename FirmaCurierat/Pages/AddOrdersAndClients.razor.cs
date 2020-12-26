@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,7 +36,33 @@ namespace FirmaCurierat.Pages
 
         protected async Task registerOrder(MouseEventArgs args)
         {
+            try
+            {
+                SqlConnection scn = new SqlConnection();
+                scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+                SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail) values (@nam,@pre,@adr,@mail)", scn);
+                scmd.Parameters.Clear();
 
+                scmd.Parameters.AddWithValue("@nam", client.nume);
+                scmd.Parameters.AddWithValue("@pre", client.prenume);
+                //scmd.Parameters.AddWithValue("@an", driver.an_angajare);
+                scmd.Parameters.AddWithValue("@adr", client.adresa);
+                scmd.Parameters.AddWithValue("@mail", client.mail);
+                scn.Open();
+                int inserted_Client = (int) scmd.ExecuteScalar();
+                scmd = new SqlCommand("insert into comenzi (data_livrare,awb,id_dispecer,id_client) values (@date,@awb,@id1,@id2)", scn);
+                scmd.Parameters.AddWithValue("@date", comanda.data_livrare);
+                scmd.Parameters.AddWithValue("@awb", comanda.awb);
+                //scmd.Parameters.AddWithValue("@an", driver.an_angajare);
+                scmd.Parameters.AddWithValue("@id1", comanda.id_dispecer);
+                scmd.Parameters.AddWithValue("@id2", inserted_Client);
+                scmd.ExecuteNonQuery();
+            }
+            catch(Exception e )
+            {
+                throw;
+            }
+        
         }
     }
 }
