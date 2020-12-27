@@ -57,9 +57,11 @@ namespace FirmaCurierat.Pages
                 scmd.Parameters.AddWithValue("@id1", comanda.id_dispecer);
                 scmd.Parameters.AddWithValue("@id2", inserted_Client);
                 int inserted_Order = Convert.ToInt32(scmd.ExecuteScalar());
-                scmd = new SqlCommand("insert into tipul_comenzii (id_comanda, id_tip) values (@id1, @id2)");
+                scmd = new SqlCommand("insert into tipul_comenzii (id_comanda, id_tip) values (@id1, @id2)", scn);
+                scmd.Parameters.Clear();
                 scmd.Parameters.AddWithValue("@id1", inserted_Order);
-                scmd.Parameters.AddWithValue("@id2", inserted_Client);
+                scmd.Parameters.AddWithValue("@id2", tip_selected.id_tip);
+
                 scmd.ExecuteNonQuery();
             }
             catch(Exception e )
