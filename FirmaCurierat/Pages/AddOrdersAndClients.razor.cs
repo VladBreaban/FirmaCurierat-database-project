@@ -40,8 +40,8 @@ namespace FirmaCurierat.Pages
             {
                 SqlConnection scn = new SqlConnection();
                 scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
-                SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail) values (@nam,@pre,@adr,@mail)", scn);
-                scmd.Parameters.Clear();
+                SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail) values (@nam,@pre,@adr,@mail); SELECT SCOPE_IDENTITY()", scn);
+              scmd.Parameters.Clear();
 
                 scmd.Parameters.AddWithValue("@nam", client.nume);
                 scmd.Parameters.AddWithValue("@pre", client.prenume);
@@ -49,12 +49,16 @@ namespace FirmaCurierat.Pages
                 scmd.Parameters.AddWithValue("@adr", client.adresa);
                 scmd.Parameters.AddWithValue("@mail", client.mail);
                 scn.Open();
-                int inserted_Client = (int) scmd.ExecuteScalar();
-                scmd = new SqlCommand("insert into comenzi (data_livrare,awb,id_dispecer,id_client) values (@date,@awb,@id1,@id2)", scn);
+                int inserted_Client = Convert.ToInt32(scmd.ExecuteScalar());
+                scmd = new SqlCommand("insert into comenzi (data_livrare,awb,id_dispecer,id_client) values (@date,@awb,@id1,@id2);SELECT SCOPE_IDENTITY()", scn);
                 scmd.Parameters.AddWithValue("@date", comanda.data_livrare);
                 scmd.Parameters.AddWithValue("@awb", comanda.awb);
                 //scmd.Parameters.AddWithValue("@an", driver.an_angajare);
                 scmd.Parameters.AddWithValue("@id1", comanda.id_dispecer);
+                scmd.Parameters.AddWithValue("@id2", inserted_Client);
+                int inserted_Order = Convert.ToInt32(scmd.ExecuteScalar());
+                scmd = new SqlCommand("insert into tipul_comenzii (id_comanda, id_tip) values (@id1, @id2)");
+                scmd.Parameters.AddWithValue("@id1", inserted_Order);
                 scmd.Parameters.AddWithValue("@id2", inserted_Client);
                 scmd.ExecuteNonQuery();
             }
