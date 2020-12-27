@@ -34,7 +34,7 @@
                    
 
 
-                    <SfGrid DataSource="@drivers" ShowColumnChooser="true"  AllowSorting="true" AllowResizing="true" AllowPaging="true"
+                    <SfGrid @ref="@grid0" DataSource="@drivers" ShowColumnChooser="true"  AllowSorting="true" AllowResizing="true" AllowPaging="true"
                             AllowSelection="true">
 
                         <GridEvents TValue="Models.FirmaCurierat.Soferi"></GridEvents>
@@ -49,7 +49,12 @@
                             <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.an_angajare) AutoFit="true" HeaderText="Employment year" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
                             <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.id_masina) AutoFit="true" HeaderText="Car" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
                             <GridColumn Field=@nameof(Models.FirmaCurierat.Soferi.id_dispecer) AutoFit="true" HeaderText="Coordinator" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
-
+                            <GridColumn  Width="70px" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center">
+                                <Template Context="curieratContext">
+                                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="Radzen.ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, curieratContext))" @onclick:stopPropagation="true">
+                                    </RadzenButton>
+                                </Template>
+                            </GridColumn>
 
                         </GridColumns>
                     </SfGrid>
