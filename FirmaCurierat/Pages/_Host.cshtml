@@ -1,9 +1,7 @@
 ﻿@page "/"
 @namespace FirmaCurierat.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +20,7 @@
     <link  rel="stylesheet" href="_content/Radzen.Blazor/css/default.css" />
 </head>
 <body>
-    <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
+    <app>@(await Html.RenderComponentAsync<App>(RenderMode.Server))</app>
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
@@ -39,6 +35,6 @@
     <script src="_content/MatBlazor/dist/matBlazor.js"></script>
     <script src="_framework/blazor.server.js"></script>
     <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
-    
+
 </body>
 </html>

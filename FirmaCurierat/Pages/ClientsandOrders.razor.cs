@@ -26,6 +26,8 @@ namespace FirmaCurierat.Pages
 
         [Inject]
         protected NotificationService NotificationService { get; set; }
+        [Inject]
+        protected NavigationManager UriHelper { get; set; }
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
         {
             dataHelper = new DataBaseManagement.DataManagement();
@@ -37,7 +39,7 @@ namespace FirmaCurierat.Pages
         }
         public async Task goToAdd(MouseEventArgs args)
         {
-            
+
             NavigationManager.NavigateTo("/addOrdersAndClients");
             await InvokeAsync(() => { StateHasChanged(); });
         }
@@ -48,11 +50,9 @@ namespace FirmaCurierat.Pages
             {
                 if (await DialogService.Confirm("Do you want to delete this record?") == true)
                 {
-                  //  List<Models.FirmaCurierat.Soferi> drivers2 = new List<Models.FirmaCurierat.Soferi>();
-                   // drivers2 = drivers;
-                   // drivers = new List<Models.FirmaCurierat.Soferi>();
+                    
                     FirmaCurierat.Models.FirmaCurierat.Clienti data2 = new Models.FirmaCurierat.Clienti();
-                   // drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
+                    // drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
                     data2 = (Models.FirmaCurierat.Clienti)data;
                     SqlConnection scn = new SqlConnection();
                     scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
@@ -78,6 +78,15 @@ namespace FirmaCurierat.Pages
             {
                 NotificationService.Notify(NotificationSeverity.Error, $"Error", $"Unable to delete Mail");
             }
+        }
+        protected async System.Threading.Tasks.Task updateStuff(MouseEventArgs args, object data)
+        {
+            FirmaCurierat.Models.FirmaCurierat.Clienti data2 = new Models.FirmaCurierat.Clienti();
+            // drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
+            data2 = (Models.FirmaCurierat.Clienti)data;
+         UriHelper.NavigateTo($"edit-client/{data2.id_client}");
+            //var dialogResult = await DialogService.OpenAsync<EditClientandOrder>("Edit Order", new Dictionary<string, object>() { { "client_id", data2.id_client} });
+            await InvokeAsync(() => { StateHasChanged(); });
         }
     }
 }

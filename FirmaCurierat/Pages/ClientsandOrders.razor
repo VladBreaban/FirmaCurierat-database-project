@@ -53,7 +53,10 @@
                                 <Template Context="curieratContext">
                                     <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="Radzen.ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, curieratContext))" @onclick:stopPropagation="true">
                                     </RadzenButton>
+                                    <RadzenButton ButtonStyle="ButtonStyle.Info" Icon="info" Size="Radzen.ButtonSize.Small" Click="@((args) =>updateStuff(args, curieratContext))" @onclick:stopPropagation="true">
+                                    </RadzenButton>
                                 </Template>
+                               
                             </GridColumn>
 
 
