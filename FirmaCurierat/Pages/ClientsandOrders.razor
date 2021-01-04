@@ -49,14 +49,15 @@
 
                             <GridColumn Field=@nameof(Models.FirmaCurierat.Clienti.adresa) AutoFit="true" HeaderText="Address" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
                             <GridColumn Field=@nameof(Models.FirmaCurierat.Clienti.id_client) AutoFit="true" HeaderText="Order ID" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
-                            <GridColumn HeaderText="Quick actions" Width="70px" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center">
+                            <GridColumn HeaderText="Quick actions" Width="200px" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center">
                                 <Template Context="curieratContext">
                                     <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="Radzen.ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, curieratContext))" @onclick:stopPropagation="true">
                                     </RadzenButton>
                                     <RadzenButton ButtonStyle="ButtonStyle.Info" Icon="info" Size="Radzen.ButtonSize.Small" Click="@((args) =>updateStuff(args, curieratContext))" @onclick:stopPropagation="true">
                                     </RadzenButton>
+                                    <RadzenButton ButtonStyle="ButtonStyle.Info" Icon="shopping_chart" Size="Radzen.ButtonSize.Small" Click="@((args) =>updateOrder(args, curieratContext))" @onclick:stopPropagation="true">
+                                    </RadzenButton>
                                 </Template>
-                               
                             </GridColumn>
 
 

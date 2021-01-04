@@ -88,5 +88,14 @@ namespace FirmaCurierat.Pages
             //var dialogResult = await DialogService.OpenAsync<EditClientandOrder>("Edit Order", new Dictionary<string, object>() { { "client_id", data2.id_client} });
             await InvokeAsync(() => { StateHasChanged(); });
         }
+        protected async System.Threading.Tasks.Task updateOrder(MouseEventArgs args, object data)
+        {
+            FirmaCurierat.Models.FirmaCurierat.Clienti data2 = new Models.FirmaCurierat.Clienti();
+            // drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
+            data2 = (Models.FirmaCurierat.Clienti)data;
+            UriHelper.NavigateTo($"edit-order/{data2.id_client}");
+            //var dialogResult = await DialogService.OpenAsync<EditClientandOrder>("Edit Order", new Dictionary<string, object>() { { "client_id", data2.id_client} });
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
     }
 }
