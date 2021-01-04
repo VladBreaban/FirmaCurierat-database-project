@@ -71,15 +71,15 @@
                         </div>
                     </ContentTemplate>
                 </AccordionItem>
-                <AccordionItem Header="Distribute order to drivers" IconCss="e-icons e-drivers">
+                <AccordionItem Header="View orders by city" IconCss="e-icons e-drivers">
                     <ContentTemplate>
                         <div style="margin-bottom: 1rem" class="row">
                             <div class="col-md-2">
-                                <RadzenLabel Component="distribute_orders" style="font-weight: 500; font-size: medium;" Text="Click here to distribute orders">
+                                <RadzenLabel Component="distribute_orders" style="font-weight: 500; font-size: medium;" Text="Click here to view orders">
                                 </RadzenLabel>
                             </div>
                             <div class="col-md-1">
-                                <SfButton CssClass="e-primary">Distribute</SfButton>
+                                <SfButton CssClass="e-primary" OnClick="@viewOrders">Distribute</SfButton>
                             </div>
                         </div>
                     </ContentTemplate>
