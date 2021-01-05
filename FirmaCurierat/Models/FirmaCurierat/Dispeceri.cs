@@ -17,7 +17,7 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;
             set;
         }
-        public string? nume
+        public string? nume_dispecer
         {
             get;
             set;

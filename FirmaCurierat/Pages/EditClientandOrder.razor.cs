@@ -97,7 +97,7 @@ namespace FirmaCurierat.Pages
             {
                 Models.FirmaCurierat.Dispeceri temp = new Models.FirmaCurierat.Dispeceri();
                 temp.id_dispecer = (int)dr["id_dispecer"];
-                temp.nume = (string)dr["nume"];
+                temp.nume_dispecer = (string)dr["nume_dispecer"];
                 coordsList.Add(temp);
             }
             sqlCommand = "select * from tip_comenzi";

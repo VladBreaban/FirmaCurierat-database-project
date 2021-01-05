@@ -20,12 +20,17 @@ namespace FirmaCurierat.Pages
         public async Task viewDrivers(MouseEventArgs args)
         {
             UriHelper.NavigateTo("/employees");
-         //   var dialogResult = await DialogService.OpenAsync<Employees>("Drivers");
+         
         }
         public async Task viewOrders(MouseEventArgs args)
         {
             UriHelper.NavigateTo("/view-number");
-            //   var dialogResult = await DialogService.OpenAsync<Employees>("Drivers");
+          
+        }
+        public async Task viewGeneral(MouseEventArgs args)
+        {
+            UriHelper.NavigateTo("/view-general");
+       
         }
     }
 }
