@@ -84,7 +84,7 @@ namespace FirmaCurierat.Pages
 
         public async Task back(MouseEventArgs args)
         {
-
+            UriHelper.NavigateTo("/counter");
         }
 
     }

@@ -16,6 +16,8 @@ namespace FirmaCurierat.Pages
         protected Models.FirmaCurierat.TipComenzi tip_selected;
         protected List<Models.FirmaCurierat.Dispeceri> coordsList;
         protected DataBaseManagement.DataManagement dataHelper;
+        [Inject]
+        protected NavigationManager UriHelper { get; set; }
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
         {
             client = new Models.FirmaCurierat.Clienti();
@@ -69,6 +71,10 @@ namespace FirmaCurierat.Pages
                 throw;
             }
         
+        }
+        protected async Task goBack(MouseEventArgs args)
+        {
+            UriHelper.NavigateTo("/clientsandOrders");
         }
     }
 }

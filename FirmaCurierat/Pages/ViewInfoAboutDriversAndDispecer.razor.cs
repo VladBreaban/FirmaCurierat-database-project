@@ -75,9 +75,7 @@ namespace FirmaCurierat.Pages
             list2 = new List<forGrid2>();
             list3 = new List<forGrid3>();
             string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
-            //string sqlCommand = "select a.nume, a.prenume, b.id_comanda from clienti a " +
-            //      "inner join comenzi b on a.id_client = b.id_client" +
-            //      " where a.oras= " + "'" + tara.nume + "'";
+            
             string sqlCommand = "select a.nume_dispecer, b.nume, b.prenume from dispeceri a " +
                 "inner join soferi b on a.id_dispecer = b.id_dispecer";
             interestList = await dataHelper.LoadData<infoForTheGrid, dynamic>(sqlCommand, new { }, ConnectionString);
