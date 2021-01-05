@@ -29,6 +29,29 @@ namespace FirmaCurierat.Pages
 
             }
         }
+        public class forGrid2
+        {
+            public string nume_dispecer
+            {
+                get;
+                set;
+            }
+            public string id_comanda
+            {
+                get;
+                set;
+            }
+        }
+        public class forGrid3
+        {
+            public string nume_dispecer
+            {
+                get;
+                set;
+            }
+        }
+        public List<forGrid3> list3;
+        public List<forGrid2> list2;
         [Inject]
         protected DialogService DialogService { get; set; }
 
@@ -49,6 +72,8 @@ namespace FirmaCurierat.Pages
         {
             dataHelper = new DataBaseManagement.DataManagement();
             interestList = new List<infoForTheGrid>();
+            list2 = new List<forGrid2>();
+            list3 = new List<forGrid3>();
             string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
             //string sqlCommand = "select a.nume, a.prenume, b.id_comanda from clienti a " +
             //      "inner join comenzi b on a.id_client = b.id_client" +
@@ -57,6 +82,12 @@ namespace FirmaCurierat.Pages
                 "inner join soferi b on a.id_dispecer = b.id_dispecer";
             interestList = await dataHelper.LoadData<infoForTheGrid, dynamic>(sqlCommand, new { }, ConnectionString);
 
+            sqlCommand = "select a.nume_dispecer, b.id_comanda from dispeceri a inner join comenzi b on a.id_dispecer = b.id_dispecer";
+            list2 = await dataHelper.LoadData<forGrid2, dynamic>(sqlCommand, new { }, ConnectionString);
+
+            sqlCommand = "select a.nume_dispecer,count(id_comanda) as id_co " +
+                "from dispeceri a inner join comenzi c on a.id_dispecer = c.id_dispecer group by a.nume_dispecer having count(id_comanda) >=5";
+                list3= await dataHelper.LoadData<forGrid3, dynamic>(sqlCommand, new { }, ConnectionString);
         }
 
     }

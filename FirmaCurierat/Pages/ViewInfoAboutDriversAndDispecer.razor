@@ -27,7 +27,7 @@
 
 
 
-        <SfGrid  DataSource="interestList" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
+        <SfGrid DataSource="interestList" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
                 AllowSelection="true">
 
             <GridEvents TValue="infoForTheGrid"></GridEvents>
@@ -39,6 +39,60 @@
                 <GridColumn Field=@nameof(infoForTheGrid.nume) AutoFit="true" HeaderText="Driver Name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
                 <GridColumn Field=@nameof(infoForTheGrid.prenume) AutoFit="true" HeaderText="Driver Surname" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
                 <GridColumn Field=@nameof(infoForTheGrid.nume_dispecer) AutoFit="true" HeaderText="Supervisor name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+
+            </GridColumns>
+        </SfGrid>
+    </Syncfusion.Blazor.Cards.SfCard>
+</div>
+<RadzenHeading Size="H5" Text="Supervisors and orders" Style="font-size:x-large;margin-top:60px; font-weight:bold;">
+
+</RadzenHeading>
+
+<hr />
+<br />
+<div style="margin-top:30px;">
+    <Syncfusion.Blazor.Cards.SfCard>
+
+
+
+        <SfGrid DataSource="list2" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
+                AllowSelection="true">
+
+            <GridEvents TValue="forGrid2"></GridEvents>
+            <GridPageSettings PageCount="6" PageSize="5"></GridPageSettings>
+
+            <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Single"></GridSelectionSettings>
+
+            <GridColumns>
+                <GridColumn Field=@nameof(forGrid2.nume_dispecer) AutoFit="true" HeaderText="Supervisor Name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+                <GridColumn Field=@nameof(forGrid2.id_comanda) AutoFit="true" HeaderText="Order ID" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+
+            </GridColumns>
+        </SfGrid>
+    </Syncfusion.Blazor.Cards.SfCard>
+</div>
+<RadzenHeading Size="H5" Text="Supervisors with more than 5 orders" Style="font-size:x-large;margin-top:60px; font-weight:bold;">
+
+</RadzenHeading>
+
+<hr />
+<br />
+<div style="margin-top:0px; width:500px;">
+    <Syncfusion.Blazor.Cards.SfCard >
+
+
+
+        <SfGrid DataSource="list3" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
+                AllowSelection="true">
+
+            <GridEvents TValue="forGrid3"></GridEvents>
+            <GridPageSettings PageCount="6" PageSize="5"></GridPageSettings>
+
+            <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Single"></GridSelectionSettings>
+
+            <GridColumns>
+                <GridColumn Field=@nameof(forGrid3.nume_dispecer) AutoFit="true" HeaderText="Supervisor Name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width=""></GridColumn>
+                
 
             </GridColumns>
         </SfGrid>
