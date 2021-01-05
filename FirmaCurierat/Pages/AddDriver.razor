@@ -72,10 +72,9 @@
                                     </RadzenLabel>
                                 </div>
                                 <div class="col-md-3" style="margin-left:-100px;">
-                                    <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a coordinator..." TValue="int" TItem="Models.FirmaCurierat.Dispeceri" @bind-Value="@driver.id_dispecer" DataSource="@coordsList" Width="380px;">
-                                        <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.Dispeceri"></DropDownListEvents>
-                                        <DropDownListFieldSettings Text="nume" Value="id_dispecer"></DropDownListFieldSettings>
-                                    </Syncfusion.Blazor.DropDowns.SfDropDownList>
+                                    
+                                    <RadzenDropDown @bind-Value="@(driver.id_dispecer)" TextProperty="nume_dispecer" ValueProperty="id_dispecer" TValue="int" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="Radzen.FilterCaseSensitivity.CaseInsensitive" Placeholder="Select a coordinator..." Data="@coordsList"
+                                                    Style=" width:380px;" />
 
                                 </div>
                             </div>

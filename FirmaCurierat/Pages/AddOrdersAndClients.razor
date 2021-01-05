@@ -62,6 +62,17 @@
                     </div>
                     <div style="margin-bottom: 1rem" class="row">
                         <div class="col-md-3">
+                            <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="City">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+
+                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(client.oras)" Name="city">
+                            </RadzenTextBox>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
                             <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Complete adress ">
                             </RadzenLabel>
                         </div>
@@ -101,10 +112,8 @@
                         </div>
                         <div class="col-md-3" style="margin-left:-100px;">
 
-                            <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a coordinator..." TValue="int" TItem="Models.FirmaCurierat.Dispeceri" @bind-Value="@comanda.id_dispecer" DataSource="@coordsList" Width="380px;">
-                                <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.Dispeceri"></DropDownListEvents>
-                                <DropDownListFieldSettings Text="nume" Value="id_dispecer"></DropDownListFieldSettings>
-                            </Syncfusion.Blazor.DropDowns.SfDropDownList>
+                            <RadzenDropDown @bind-Value="@(comanda.id_dispecer)" TextProperty="nume_dispecer" ValueProperty="id_dispecer" TValue="int" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="Radzen.FilterCaseSensitivity.CaseInsensitive" Placeholder="Select a coordinator..." Data="@coordsList"
+                                             Style=" width:380px;" />
                         </div>
                     </div>
                     <div style="margin-bottom: 1rem" class="row">
@@ -114,10 +123,8 @@
                         </div>
                         <div class="col-md-3" style="margin-left:-100px;">
 
-                            <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a type..." TValue="int" TItem="Models.FirmaCurierat.TipComenzi" @bind-Value="@tip_selected.id_tip" DataSource="@tip" Width="380px;">
-                                <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.TipComenzi"></DropDownListEvents>
-                                <DropDownListFieldSettings Text="tip" Value="id_tip"></DropDownListFieldSettings>
-                            </Syncfusion.Blazor.DropDowns.SfDropDownList>
+                            <RadzenDropDown @bind-Value="@(tip_selected.id_tip)" TextProperty="tip" ValueProperty="id_tip" TValue="int" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="Radzen.FilterCaseSensitivity.CaseInsensitive" Placeholder="Select a type..." Data="@tip"
+                                            Style=" width:380px;" />
                         </div>
                     </div>
 

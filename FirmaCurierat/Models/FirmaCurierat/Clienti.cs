@@ -38,6 +38,11 @@ namespace FirmaCurierat.Models.FirmaCurierat
         {
             get;set;
         }
+        public string oras
+        {
+            get;
+            set;
+        }
 
        
     }

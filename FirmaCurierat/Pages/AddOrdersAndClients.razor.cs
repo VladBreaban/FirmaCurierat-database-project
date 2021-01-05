@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Radzen;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -18,6 +19,8 @@ namespace FirmaCurierat.Pages
         protected DataBaseManagement.DataManagement dataHelper;
         [Inject]
         protected NavigationManager UriHelper { get; set; }
+        [Inject]
+        protected NotificationService NotificationService { get; set; }
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
         {
             client = new Models.FirmaCurierat.Clienti();
@@ -35,14 +38,25 @@ namespace FirmaCurierat.Pages
             tip = await dataHelper.LoadData<Models.FirmaCurierat.TipComenzi, dynamic>(sqlCommand, new { }, ConnectionString);
 
         }
-
+        protected async Task<bool> verifyAllField()
+        {
+            if (client.nume == null || client.prenume == null || client.adresa == null || client.oras == null || client.mail == null || comanda.data_livrare == null || comanda.awb == null || comanda.id_dispecer == null || tip_selected.id_tip == null)
+                return false;
+            else return true;
+        }
         protected async Task registerOrder(MouseEventArgs args)
         {
             try
             {
+                var ok = await verifyAllField();
+                if (ok == false)
+                {
+                    NotificationService.Notify(NotificationSeverity.Error, $"All field are required!");
+                    return;
+                }
                 SqlConnection scn = new SqlConnection();
                 scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
-                SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail) values (@nam,@pre,@adr,@mail); SELECT SCOPE_IDENTITY()", scn);
+                SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail,oras) values (@nam,@pre,@adr,@mail,@o); SELECT SCOPE_IDENTITY()", scn);
               scmd.Parameters.Clear();
 
                 scmd.Parameters.AddWithValue("@nam", client.nume);
@@ -50,6 +64,7 @@ namespace FirmaCurierat.Pages
                 //scmd.Parameters.AddWithValue("@an", driver.an_angajare);
                 scmd.Parameters.AddWithValue("@adr", client.adresa);
                 scmd.Parameters.AddWithValue("@mail", client.mail);
+                scmd.Parameters.AddWithValue("@o", client.oras);
                 scn.Open();
                 int inserted_Client = Convert.ToInt32(scmd.ExecuteScalar());
                 scmd = new SqlCommand("insert into comenzi (data_livrare,awb,id_dispecer,id_client) values (@date,@awb,@id1,@id2);SELECT SCOPE_IDENTITY()", scn);
@@ -65,6 +80,7 @@ namespace FirmaCurierat.Pages
                 scmd.Parameters.AddWithValue("@id2", tip_selected.id_tip);
 
                 scmd.ExecuteNonQuery();
+                UriHelper.NavigateTo("/clientsandOrders");
             }
             catch(Exception e )
             {
