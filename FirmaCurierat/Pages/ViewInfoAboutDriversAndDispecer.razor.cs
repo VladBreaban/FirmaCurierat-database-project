@@ -71,6 +71,31 @@ namespace FirmaCurierat.Pages
                 set;
             }
         }
+        public class forGrid5
+        {
+            public string nume
+            {
+                get;
+                set;
+
+            }
+            public string prenume
+            {
+                get;
+                set;
+            }
+            public string marca
+            {
+                get;
+                set;
+            }
+            public string an
+            {
+                get;
+                set;
+            }
+        }
+        public List<forGrid5> list5;
         public List<forGrid4> list4;
         public List<forGrid3> list3;
         public List<forGrid2> list2;
@@ -119,6 +144,9 @@ namespace FirmaCurierat.Pages
             sqlCommand = "select a.nume, a.prenume, b.awb from clienti a inner join comenzi b on a.id_client = b.id_client";
             list4 = await dataHelper.LoadData<forGrid4, dynamic>(sqlCommand, new { }, ConnectionString);
 
+            list5 = new List<forGrid5>();
+            sqlCommand = "select a.marca, a.an, b.nume, b.prenume from masini a left join soferi b on a.id_masina = b.id_masina group by a.marca, a.an, b.nume, b.prenume having a.an <= 2020";
+            list5 = await dataHelper.LoadData<forGrid5, dynamic>(sqlCommand, new { }, ConnectionString);
         }
 
     }
