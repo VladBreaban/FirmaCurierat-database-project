@@ -35,7 +35,12 @@ namespace FirmaCurierat.Pages
             tara = new Models.FirmaCurierat.Cities();
             dataHelper = new DataBaseManagement.DataManagement();
             cities = new List<Models.FirmaCurierat.Cities>();
-            string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
             clients = new List<FirmaCurierat.Models.FirmaCurierat.Clienti>();
             string sqlCommand = "select * from  cities";
            cities = await dataHelper.LoadData<FirmaCurierat.Models.FirmaCurierat.Cities, dynamic>(sqlCommand, new { }, ConnectionString);
@@ -50,8 +55,13 @@ namespace FirmaCurierat.Pages
             else
             {
                 listForGrid = new List<Models.FirmaCurierat.OrdersByCity>();
-                string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
-               
+                string ServerName = Environment.MachineName;
+
+                string database = "CurieratVladProiect";
+                string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
+
                 string sqlCommand = "select a.nume, a.prenume, b.id_comanda from clienti a " +
                     "inner join comenzi b on a.id_client = b.id_client" +
                     " where a.oras= " +"'"+tara.nume+"'";

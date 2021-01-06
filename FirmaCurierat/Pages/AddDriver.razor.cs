@@ -40,7 +40,12 @@ namespace FirmaCurierat.Pages
             carsList = new List<Models.FirmaCurierat.Masini>();
             coordsList = new List<Models.FirmaCurierat.Dispeceri>();
             // SqlConnection scn = new SqlConnection();
-            string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
             coordsList = new List<Models.FirmaCurierat.Dispeceri>();
             carsList = new List<Models.FirmaCurierat.Masini>();
             string sqlCommand = "select * from  dispeceri";
@@ -61,7 +66,13 @@ namespace FirmaCurierat.Pages
                     return;
                 }
                 SqlConnection scn = new SqlConnection();
-                scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+                string ServerName = Environment.MachineName;
+
+                string database = "CurieratVladProiect";
+                string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
+                scn.ConnectionString = ConnectionString;
                 SqlCommand scmd = new SqlCommand("insert into soferi (nume,prenume,an_angajare,id_masina,id_dispecer) values (@nam,@pre,@an,@id1,@id2)", scn);
                 scmd.Parameters.Clear();
                 driver.an_angajare = 2020;

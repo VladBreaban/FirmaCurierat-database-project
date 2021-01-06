@@ -50,6 +50,28 @@ namespace FirmaCurierat.Pages
                 set;
             }
         }
+
+        public class forGrid4
+        {
+            public string nume
+            {
+                get;
+                set;
+
+            }
+
+            public string prenume
+            {
+                get;
+                set;
+            }
+            public string awb
+            {
+                get;
+                set;
+            }
+        }
+        public List<forGrid4> list4;
         public List<forGrid3> list3;
         public List<forGrid2> list2;
         [Inject]
@@ -74,7 +96,12 @@ namespace FirmaCurierat.Pages
             interestList = new List<infoForTheGrid>();
             list2 = new List<forGrid2>();
             list3 = new List<forGrid3>();
-            string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+            
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+         
             
             string sqlCommand = "select a.nume_dispecer, b.nume, b.prenume from dispeceri a " +
                 "inner join soferi b on a.id_dispecer = b.id_dispecer";
@@ -86,6 +113,12 @@ namespace FirmaCurierat.Pages
             sqlCommand = "select a.nume_dispecer,count(id_comanda) as id_co " +
                 "from dispeceri a inner join comenzi c on a.id_dispecer = c.id_dispecer group by a.nume_dispecer having count(id_comanda) >=5";
                 list3= await dataHelper.LoadData<forGrid3, dynamic>(sqlCommand, new { }, ConnectionString);
+
+            list4 = new List<forGrid4>();
+
+            sqlCommand = "select a.nume, a.prenume, b.awb from clienti a inner join comenzi b on a.id_client = b.id_client";
+            list4 = await dataHelper.LoadData<forGrid4, dynamic>(sqlCommand, new { }, ConnectionString);
+
         }
 
     }

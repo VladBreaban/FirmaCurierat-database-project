@@ -32,7 +32,12 @@ namespace FirmaCurierat.Pages
         {
             dataHelper = new DataBaseManagement.DataManagement();
             // SqlConnection scn = new SqlConnection();
-            string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
             clients = new List<FirmaCurierat.Models.FirmaCurierat.Clienti>();
             string sqlCommand = "select * from  clienti";
             clients = await dataHelper.LoadData<FirmaCurierat.Models.FirmaCurierat.Clienti, dynamic>(sqlCommand, new { }, ConnectionString);
@@ -55,7 +60,13 @@ namespace FirmaCurierat.Pages
                     // drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
                     data2 = (Models.FirmaCurierat.Clienti)data;
                     SqlConnection scn = new SqlConnection();
-                    scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+                    string ServerName = Environment.MachineName;
+
+                    string database = "CurieratVladProiect";
+                    string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
+                    scn.ConnectionString = ConnectionString;
                     SqlCommand scmd = new SqlCommand("select id_comanda from comenzi where id_client = @id", scn);
                     scmd.Parameters.Clear();
                     scmd.Parameters.AddWithValue("@id", data2.id_client);

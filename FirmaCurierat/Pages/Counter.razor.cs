@@ -30,7 +30,12 @@ namespace FirmaCurierat.Pages
         {
             dataHelper = new DataBaseManagement.DataManagement();
             // SqlConnection scn = new SqlConnection();
-            string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
             drivers = new List<FirmaCurierat.Models.FirmaCurierat.Soferi>();
             string sqlCommand = "select * from  soferi";
             drivers = await dataHelper.LoadData<FirmaCurierat.Models.FirmaCurierat.Soferi, dynamic>(sqlCommand, new { }, ConnectionString);
@@ -56,7 +61,13 @@ namespace FirmaCurierat.Pages
                     drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
                     data2 = (Models.FirmaCurierat.Soferi)data;
                     SqlConnection scn = new SqlConnection();
-                    scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+                    string ServerName = Environment.MachineName;
+
+                    string database = "CurieratVladProiect";
+                    string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
+                    scn.ConnectionString = ConnectionString;
                     SqlCommand scmd = new SqlCommand("delete from soferi where id_sofer =  @id", scn);
                     scmd.Parameters.Clear();
                     scmd.Parameters.AddWithValue("@id", data2.id_sofer);

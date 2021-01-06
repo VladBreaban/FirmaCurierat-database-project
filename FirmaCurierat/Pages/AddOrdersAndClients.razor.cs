@@ -29,7 +29,12 @@ namespace FirmaCurierat.Pages
             coordsList = new List<Models.FirmaCurierat.Dispeceri>();
             tip_selected = new Models.FirmaCurierat.TipComenzi();
             // SqlConnection scn = new SqlConnection();
-            string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
             coordsList = new List<Models.FirmaCurierat.Dispeceri>();
             string sqlCommand = "select * from  dispeceri";
             dataHelper = new DataBaseManagement.DataManagement();

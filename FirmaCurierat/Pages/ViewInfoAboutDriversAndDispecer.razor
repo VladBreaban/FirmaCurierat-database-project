@@ -22,7 +22,7 @@
 <hr />
 <br />
 
-<div style="margin-top:70px;">
+<div style="margin-top:30px;">
     <Syncfusion.Blazor.Cards.SfCard>
 
 
@@ -78,7 +78,7 @@
 <hr />
 <br />
 <div style="margin-top:0px; width:500px;">
-    <Syncfusion.Blazor.Cards.SfCard >
+    <Syncfusion.Blazor.Cards.SfCard>
 
 
 
@@ -92,8 +92,35 @@
 
             <GridColumns>
                 <GridColumn Field=@nameof(forGrid3.nume_dispecer) AutoFit="true" HeaderText="Supervisor Name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width=""></GridColumn>
-                
 
+
+            </GridColumns>
+        </SfGrid>
+    </Syncfusion.Blazor.Cards.SfCard>
+</div>
+<RadzenHeading Size="H5" Text="Clients and awb orders" Style="font-size:x-large;margin-top:60px; font-weight:bold;">
+
+</RadzenHeading>
+
+<hr />
+<br />
+<div style="margin-top:0px; width:500px;">
+    <Syncfusion.Blazor.Cards.SfCard>
+
+
+
+        <SfGrid DataSource="list4" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
+                AllowSelection="true">
+
+            <GridEvents TValue="forGrid4"></GridEvents>
+            <GridPageSettings PageCount="6" PageSize="5"></GridPageSettings>
+
+            <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Single"></GridSelectionSettings>
+
+            <GridColumns>
+                <GridColumn Field=@nameof(forGrid4.nume) AutoFit="true" HeaderText="Client Name" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width=""></GridColumn>
+                <GridColumn Field=@nameof(forGrid4.prenume) AutoFit="true" HeaderText="Client Surname" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width=""></GridColumn>
+                   <GridColumn Field=@nameof(forGrid4.awb) AutoFit="true" HeaderText="Order AWB" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width=""></GridColumn>
             </GridColumns>
         </SfGrid>
     </Syncfusion.Blazor.Cards.SfCard>
