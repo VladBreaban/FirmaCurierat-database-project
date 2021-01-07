@@ -32,5 +32,10 @@ namespace FirmaCurierat.Pages
             UriHelper.NavigateTo("/view-general");
        
         }
+
+        public async Task viewOrderValues(MouseEventArgs args)
+        {
+            DialogService.OpenAsync<Requested>("The most valuable orders");
+        }
     }
 }

@@ -107,13 +107,23 @@
                     </div>
                     <div style="margin-bottom: 1rem" class="row">
                         <div class="col-md-3">
+                            <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Value:">
+                            </RadzenLabel>
+                        </div>
+                        <div class="col-md-3" style="margin-left:-100px;">
+
+                            <RadzenNumeric TValue="int" Min="100" Max="2000" @bind-Value="@comanda.valoare_comanda" />
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1rem" class="row">
+                        <div class="col-md-3">
                             <RadzenLabel Component="srv_mail_username" style="font-size: medium; font-weight:bold" Text="Responsible:">
                             </RadzenLabel>
                         </div>
                         <div class="col-md-3" style="margin-left:-100px;">
 
                             <RadzenDropDown @bind-Value="@(comanda.id_dispecer)" TextProperty="nume_dispecer" ValueProperty="id_dispecer" TValue="int" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="Radzen.FilterCaseSensitivity.CaseInsensitive" Placeholder="Select a coordinator..." Data="@coordsList"
-                                             Style=" width:380px;" />
+                                            Style=" width:380px;" />
                         </div>
                     </div>
                     <div style="margin-bottom: 1rem" class="row">

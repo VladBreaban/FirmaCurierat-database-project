@@ -61,7 +61,15 @@ namespace FirmaCurierat.Pages
                 scn.Open();
                if( scmd.ExecuteScalar().ToString() == "1" )
                 {
-                    UriHelper.NavigateTo("/quickactions");
+                    if(username == "admin")
+                    {
+                        UriHelper.NavigateTo("/quickactions");
+                    }
+                    else
+                    {
+                        UriHelper.NavigateTo("/user");
+                    }
+                   
                 }
                 else
                 {

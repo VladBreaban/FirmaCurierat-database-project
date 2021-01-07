@@ -38,5 +38,10 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;
             set;
         }
+        public int valoare_comanda
+        {
+            get;
+            set;
+        }
     }
 }
