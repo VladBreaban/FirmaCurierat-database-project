@@ -31,38 +31,13 @@
 
         <SfAccordion>
             <AccordionItems>
-                <AccordionItem Header="Register an employee" IconCss="e-icons e-timelinemonth" Expanded=true>
-                    <ContentTemplate>
-                        <div style="margin-bottom: 1rem" class="row">
-                            <div class="col-md-2">
-                                <RadzenLabel Component="add_employee" style="font-weight: 500; font-size: medium;" Text="Click here to add an employee: ">
-                                </RadzenLabel>
-                            </div>
-                            <div class="col-md-1">
-                                <SfButton CssClass="e-primary" IconCss="e-icons e-timelinemonth">Add</SfButton>
-                            </div>
-                        </div>
-
-                    </ContentTemplate>
-                </AccordionItem>
-                <AccordionItem Header="View employees" IconCss="e-icons e-employee">
-                    <ContentTemplate>
-                        <div style="margin-bottom: 1rem" class="row">
-                            <div class="col-md-2">
-                                <RadzenLabel Component="view_employee" style="font-weight: 500; font-size: medium;" Text="Click here to to view drivers: ">
-                                </RadzenLabel>
-                            </div>
-                            <div class="col-md-1" style="margin-left:-30px;">
-                                <SfButton OnClick="@viewDrivers" CssClass="e-success" IconCss="e-icons e-info">View</SfButton>
-                            </div>
-                        </div>
-                    </ContentTemplate>
-                </AccordionItem>
+            
+              
                 <AccordionItem Header="Expensive orders" IconCss="e-icons e-order">
                     <ContentTemplate>
                         <div style="margin-bottom: 1rem" class="row">
                             <div class="col-md-2">
-                                <RadzenLabel Component="add_order" style="font-weight: 500; font-size: medium;" Text="Click here to view  order with value bigger than">
+                                <RadzenLabel Component="add_order" style="font-weight: 500; font-size: medium;" Text="We are proud about">
                                 </RadzenLabel>
                             </div>
                             <div class="col-md-1">
@@ -79,7 +54,7 @@
                                 </RadzenLabel>
                             </div>
                             <div class="col-md-1">
-                                <SfButton CssClass="e-primary" OnClick="@viewOrders">Distribute</SfButton>
+                                <SfButton CssClass="e-primary" OnClick="@viewOrders">View</SfButton>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -88,7 +63,7 @@
                     <ContentTemplate>
                         <div style="margin-bottom: 1rem" class="row">
                             <div class="col-md-2">
-                                <RadzenLabel Component="company_info" style="font-weight: 500; font-size: medium;" Text="Click here to distribute orders">
+                                <RadzenLabel Component="company_info" style="font-weight: 500; font-size: medium;" Text="Click here to view information">
                                 </RadzenLabel>
                             </div>
                             <div class="col-md-1">
