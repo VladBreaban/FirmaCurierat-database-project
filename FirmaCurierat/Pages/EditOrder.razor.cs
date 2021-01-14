@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Radzen;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,6 +11,8 @@ namespace FirmaCurierat.Pages
 {
     public class EditOrderComponent : ComponentBase
     {
+        [Inject]
+        protected NotificationService NotificationService { get; set; }
         [Inject]
         protected NavigationManager UriHelper { get; set; }
         [Parameter]
@@ -129,8 +132,8 @@ namespace FirmaCurierat.Pages
             scmd.Parameters.AddWithValue("@id1", tip_selected.id_tip);
             scmd.Parameters.AddWithValue("@id2", order_id);
             scmd.ExecuteNonQuery();
+            NotificationService.Notify(NotificationSeverity.Success, $"Order edited!");
 
-           
         }
       
         protected async Task update(MouseEventArgs args)

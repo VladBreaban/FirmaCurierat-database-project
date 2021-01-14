@@ -35,7 +35,7 @@
 
 
 
-                    <SfGrid DataSource="@clients" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
+                    <SfGrid @ref="grid" DataSource="@clients" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
                             AllowSelection="true">
 
                         <GridEvents TValue="Models.FirmaCurierat.Clienti"></GridEvents>

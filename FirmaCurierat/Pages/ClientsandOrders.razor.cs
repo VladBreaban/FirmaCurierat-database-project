@@ -28,6 +28,7 @@ namespace FirmaCurierat.Pages
         protected NotificationService NotificationService { get; set; }
         [Inject]
         protected NavigationManager UriHelper { get; set; }
+        public Syncfusion.Blazor.Grids.SfGrid<Models.FirmaCurierat.Clienti> grid;
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
         {
             dataHelper = new DataBaseManagement.DataManagement();
@@ -83,11 +84,17 @@ namespace FirmaCurierat.Pages
                     scmd.ExecuteNonQuery();
                     this.StateHasChanged();
 
+                    clients = new List<FirmaCurierat.Models.FirmaCurierat.Clienti>();
+                    string sqlCommand = "select * from  clienti";
+                    clients = await dataHelper.LoadData<FirmaCurierat.Models.FirmaCurierat.Clienti, dynamic>(sqlCommand, new { }, ConnectionString);
+                    grid.Refresh();
+                    NotificationService.Notify(NotificationSeverity.Success, $"Order deleted");
+
                 }
             }
             catch (System.Exception rlvMailerDeleteMailException)
             {
-                NotificationService.Notify(NotificationSeverity.Error, $"Error", $"Unable to delete Mail");
+                NotificationService.Notify(NotificationSeverity.Error, $"Error", $"Unable to delete order and client");
             }
         }
         protected async System.Threading.Tasks.Task updateStuff(MouseEventArgs args, object data)

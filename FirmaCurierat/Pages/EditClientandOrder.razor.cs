@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http.Extensions;
+using Radzen;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,6 +12,8 @@ namespace FirmaCurierat.Pages
 {
     public class EditClientandOrderComponent : ComponentBase
     {
+        [Inject]
+        protected NotificationService NotificationService { get; set; }
         [Inject]
         protected NavigationManager UriHelper { get; set; }
         [Parameter]
@@ -148,6 +151,7 @@ namespace FirmaCurierat.Pages
                 scmd.Parameters.AddWithValue("@id", client_id);
                 scn.Open();
                 int inserted_Client = Convert.ToInt32(scmd.ExecuteScalar());
+                NotificationService.Notify(NotificationSeverity.Success, $"Client  edited!");
                 UriHelper.NavigateTo("/clientsandOrders");
             } catch(Exception e )
             {

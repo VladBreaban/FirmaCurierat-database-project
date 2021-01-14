@@ -99,6 +99,7 @@ namespace FirmaCurierat.Pages
                 scmd.Parameters.AddWithValue("@id2", tip_selected.id_tip);
 
                 scmd.ExecuteNonQuery();
+                NotificationService.Notify(NotificationSeverity.Success, $"Order added!");
                 UriHelper.NavigateTo("/clientsandOrders");
             }
             catch(Exception e )
