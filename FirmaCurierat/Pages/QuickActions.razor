@@ -22,7 +22,7 @@
     <ChildContent>
         <RadzenHeading Size="H1" Text="Welcome to the fastest delivery company">
         </RadzenHeading>
-        <RadzenHeading Size="H3" Text="There is some quick actions:">
+        <RadzenHeading Size="H3" Text="There are some quick actions:">
         </RadzenHeading>
         <br />
         <br />
@@ -31,8 +31,8 @@
 
         <SfAccordion>
             <AccordionItems>
-            
-              
+
+
                 <AccordionItem Header="Expensive orders" IconCss="e-icons e-order">
                     <ContentTemplate>
                         <div style="margin-bottom: 1rem" class="row">
@@ -74,6 +74,15 @@
                 </AccordionItem>
             </AccordionItems>
         </SfAccordion>
+        <RadzenChart>
+            <RadzenColumnSeries Data="@comenzi" CategoryProperty="awb" Title="value" LineType="LineType.Dashed" ValueProperty="valoare_comanda" />
+       
+            <RadzenColumnOptions Radius="5" />
+            <RadzenValueAxis >
+                <RadzenGridLines Visible="true" />
+                <RadzenAxisTitle Text="value" />
+            </RadzenValueAxis>
+        </RadzenChart>
     </ChildContent>
 </RadzenContent>
 
