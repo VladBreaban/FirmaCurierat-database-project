@@ -50,7 +50,20 @@ namespace FirmaCurierat.Pages
         {
             if(isGridVisible == true)
             {
-                //refresh grid;
+                listForGrid = new List<Models.FirmaCurierat.OrdersByCity>();
+                string ServerName = Environment.MachineName;
+
+                string database = "CurieratVladProiect";
+                string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+
+
+                string sqlCommand = "select a.nume, a.prenume, b.id_comanda from clienti a " +
+                    "inner join comenzi b on a.id_client = b.id_client" +
+                    " where a.oras= " + "'" + tara.nume + "'";
+                listForGrid = await dataHelper.LoadData<FirmaCurierat.Models.FirmaCurierat.OrdersByCity, dynamic>(sqlCommand, new { }, ConnectionString);
+                grid.Refresh();
+                this.StateHasChanged();
             }
             else
             {
