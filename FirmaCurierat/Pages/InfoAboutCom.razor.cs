@@ -1,5 +1,7 @@
 ﻿using AntDesign;
+using AntDesign.core.JsInterop.EventArg;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using System;
 using System.Collections.Generic;
@@ -66,11 +68,27 @@ namespace FirmaCurierat.Pages
             //select a.nume, a.prenume from soferi a where a.id_dispecer = (select c.id_dispecer from dispeceri c inner join comenzi d on c.id_dispecer = d.id_dispecer where d.awb = '123111' )
             string sqlCommand = "select a.nume_dispecer from dispeceri a where " +
                                " a.id_dispecer = (select c.id_dispecer from dispeceri c inner join comenzi d on c.id_dispecer = d.id_dispecer where d.awb= '" + awb + "' and d.id_client = (select id_client from clienti e where d.id_client = e.id_client ) ) ";
-            interestList = await dataHelper.LoadData<infoForTheGrid, dynamic>(sqlCommand, new { }, ConnectionString);
+            
             List<string> nume_dispecer = new List<string>();
             nume_dispecer = await dataHelper.LoadData<string, dynamic>(sqlCommand, new { }, ConnectionString);
-            sqlCommand = "select a.valoare_comanda, a.awb,a.data_livrare from comenzi a where a.awb = ' " + awb + "'";
+            sqlCommand = "select a.valoare_comanda, a.awb,a.data_livrare from comenzi a where a.awb = '" + awb + "'";
+            interestList = await dataHelper.LoadData<infoForTheGrid, dynamic>(sqlCommand, new { }, ConnectionString);
+            if(interestList.Count == 0)
+            {
+                NotificationService.Notify(NotificationSeverity.Error, $"Error", $"We do not have an order with this awb");
+                UriHelper.NavigateTo("/user");
+            }
+            else
+            {
+                interestList.ElementAt(0).nume_dispecer = nume_dispecer.ElementAt(0);
+            }
+           
             
+        }
+
+        protected async Task logOut(MouseEventArgs args)
+        {
+            UriHelper.NavigateTo("/");
         }
         }
 }
