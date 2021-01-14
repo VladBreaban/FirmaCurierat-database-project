@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
 using Radzen;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace FirmaCurierat.Pages
 {
     public class AddOrdersAndClientsComponent:ComponentBase
     {
+        private readonly IJSRuntime jsRuntime;
         protected Models.FirmaCurierat.Clienti client;
         protected Models.FirmaCurierat.Comenzi comanda;
         protected List<Models.FirmaCurierat.TipComenzi> tip;
@@ -21,6 +23,12 @@ namespace FirmaCurierat.Pages
         protected NavigationManager UriHelper { get; set; }
         [Inject]
         protected NotificationService NotificationService { get; set; }
+
+        [Inject]
+        protected IJSRuntime JSRuntime
+        {
+            get; set;
+        }
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
         {
             client = new Models.FirmaCurierat.Clienti();
@@ -96,6 +104,35 @@ namespace FirmaCurierat.Pages
         protected async Task goBack(MouseEventArgs args)
         {
             UriHelper.NavigateTo("/clientsandOrders");
+        }
+        protected async Task<string> generateRandomString()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[20];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
+        }
+        protected async Task generateAwb(MouseEventArgs args)
+        {
+            try
+            {
+                comanda.awb = "";
+                string myValue = await this.generateRandomString();
+                
+                var cp = new GetCaretPosition(JSRuntime);
+                await cp.InsertAtCursor("generateAwb", myValue);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
     }
 }

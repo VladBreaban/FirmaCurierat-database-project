@@ -101,8 +101,12 @@
                         </div>
                         <div class="col-md-3" style="margin-left:-100px;">
 
-                            <RadzenTextBox MaxLength="255" style="width: 380px" @bind-Value="@(comanda.awb)" Name="surname">
+                            <RadzenTextBox id="generateAwb" MaxLength="255" style="width: 380px" @bind-Value="@(comanda.awb)" Name="surname">
                             </RadzenTextBox>
+                        </div>
+                        <div class="col-md-3" style="margin-left:10px;">
+
+                            <SfButton CssClass="e-round-corner" HtmlAttributes="@normalAttr" IconCss="e-icons e-refresh" Content="generate awb" @onclick="generateAwb"></SfButton>
                         </div>
                     </div>
                     <div style="margin-bottom: 1rem" class="row">
@@ -155,4 +159,19 @@
         </ChildContent>
     </RadzenContent>
 </RadzenCard>
+@code
+{
+    private Dictionary<string, object> normalAttr = new Dictionary<string, object>()
+{
+        {"title","Generate awb" },
+        {"type","button" }
+    };
+}
+<style>
+    .e-refresh:before {
+        content: '\e710';
+        color: black;
+        position: relative top:3px
+    
+</style>
 
