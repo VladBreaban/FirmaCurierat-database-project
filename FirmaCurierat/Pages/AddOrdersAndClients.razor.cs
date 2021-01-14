@@ -29,8 +29,11 @@ namespace FirmaCurierat.Pages
         {
             get; set;
         }
+        public List<Models.FirmaCurierat.Soferi> soferi;
+        
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
         {
+            soferi = new List<Models.FirmaCurierat.Soferi>();
             client = new Models.FirmaCurierat.Clienti();
             comanda = new Models.FirmaCurierat.Comenzi();
             tip = new List<Models.FirmaCurierat.TipComenzi>();
@@ -49,6 +52,8 @@ namespace FirmaCurierat.Pages
             coordsList = await dataHelper.LoadData<Models.FirmaCurierat.Dispeceri, dynamic>(sqlCommand, new { }, ConnectionString);
             sqlCommand = "select * from tip_comenzi";
             tip = await dataHelper.LoadData<Models.FirmaCurierat.TipComenzi, dynamic>(sqlCommand, new { }, ConnectionString);
+            sqlCommand = "select * from soferi";
+            soferi = await dataHelper.LoadData<Models.FirmaCurierat.Soferi, dynamic>(sqlCommand, new { }, ConnectionString);
 
         }
         protected async Task<bool> verifyAllField()
@@ -80,12 +85,13 @@ namespace FirmaCurierat.Pages
                 scmd.Parameters.AddWithValue("@o", client.oras);
                 scn.Open();
                 int inserted_Client = Convert.ToInt32(scmd.ExecuteScalar());
-                scmd = new SqlCommand("insert into comenzi (data_livrare,awb,id_dispecer,id_client) values (@date,@awb,@id1,@id2);SELECT SCOPE_IDENTITY()", scn);
+                scmd = new SqlCommand("insert into comenzi (data_livrare,awb,id_dispecer,id_client,id_sofer) values (@date,@awb,@id1,@id2,@id3);SELECT SCOPE_IDENTITY()", scn);
                 scmd.Parameters.AddWithValue("@date", comanda.data_livrare);
                 scmd.Parameters.AddWithValue("@awb", comanda.awb);
                 //scmd.Parameters.AddWithValue("@an", driver.an_angajare);
                 scmd.Parameters.AddWithValue("@id1", comanda.id_dispecer);
                 scmd.Parameters.AddWithValue("@id2", inserted_Client);
+                scmd.Parameters.AddWithValue("@id3", comanda.id_sofer);
                 int inserted_Order = Convert.ToInt32(scmd.ExecuteScalar());
                 scmd = new SqlCommand("insert into tipul_comenzii (id_comanda, id_tip) values (@id1, @id2)", scn);
                 scmd.Parameters.Clear();
