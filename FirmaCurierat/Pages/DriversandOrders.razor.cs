@@ -54,7 +54,7 @@ namespace FirmaCurierat.Pages
                                                Integrated Security = SSPI", ServerName, database);
 
             interest = new List<interestList>();
-            string sqlCommand = "select a.nume, a.prenume, b.awb from soferi a inner join dispeceri d on d.id_dispecer = (select c.id_dispecer from dispeceri c where a.id_dispecer = c.id_dispecer ) inner join comenzi b on(d.id_dispecer = b.id_dispecer)";
+            string sqlCommand = "select a.nume, a.prenume, b.awb from soferi a inner join dispeceri d on d.id_dispecer = (select c.id_dispecer from dispeceri c where a.id_dispecer = c.id_dispecer ) inner join comenzi b on(d.id_dispecer = b.id_dispecer) where b.id_sofer is not null and a.id_sofer = b.id_sofer";
             interest = await dataHelper.LoadData<interestList, dynamic>(sqlCommand, new { }, ConnectionString);
         }
         }

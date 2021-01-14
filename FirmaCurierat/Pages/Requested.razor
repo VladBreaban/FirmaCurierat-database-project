@@ -35,3 +35,23 @@
         </GridColumns>
     </SfGrid>
 </Syncfusion.Blazor.Cards.SfCard>
+<Syncfusion.Blazor.Cards.SfCard>
+
+    <h5 style="font-weight:bold; font-family:Castellar; font-size:large;">Lucky cars</h5>
+
+    <SfGrid DataSource="interestList2" ShowColumnChooser="true" AllowSorting="true" AllowResizing="true" AllowPaging="true"
+            AllowSelection="true">
+
+        <GridEvents TValue="infoForTheGrid2"></GridEvents>
+        <GridPageSettings PageCount="6" PageSize="5"></GridPageSettings>
+
+        <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Single"></GridSelectionSettings>
+
+        <GridColumns>
+            <GridColumn Field=@nameof(infoForTheGrid2.marca) AutoFit="true" HeaderText="Brand" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+            <GridColumn Field=@nameof(infoForTheGrid2.valoare_comanda) AutoFit="true" HeaderText="Order Value" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Left" Width="120"></GridColumn>
+
+
+        </GridColumns>
+    </SfGrid>
+</Syncfusion.Blazor.Cards.SfCard>
