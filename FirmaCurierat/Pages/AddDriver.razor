@@ -58,12 +58,9 @@
                                     <RadzenLabel Component="srv_mail_from" style="font-weight: bold; font-size: medium;" Text="Select a car">
                                     </RadzenLabel>
                                 </div>
-                                <div class="col-md-3" style="margin-left:-100px;">
-
-                                    <Syncfusion.Blazor.DropDowns.SfDropDownList Placeholder="Select a car..." TValue="int" TItem="Models.FirmaCurierat.Masini" @bind-Value="@driver.id_masina" DataSource="@carsList" Width="380px">
-                                        <DropDownListEvents TValue="int" TItem="Models.FirmaCurierat.Masini"></DropDownListEvents>
-                                        <DropDownListFieldSettings Text="marca" Value="id_masina"></DropDownListFieldSettings>
-                                    </Syncfusion.Blazor.DropDowns.SfDropDownList>
+                                <div class="col-md-3" style="margin-left:-100px; width:380px;">
+                                    <RadzenDropDown Style="width:380px;"  Data="carsList" TextProperty="marca" ValueProperty="id_masina" Placeholder="Select a car" TValue="int"></RadzenDropDown>
+                                   
                                 </div>
                             </div>
                             <div style="margin-bottom: 1rem" class="row">

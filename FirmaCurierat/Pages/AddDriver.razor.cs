@@ -51,9 +51,14 @@ namespace FirmaCurierat.Pages
             string sqlCommand = "select * from  dispeceri";
             dataHelper = new DataBaseManagement.DataManagement();
             //  scn.Open();
+            List<Models.FirmaCurierat.Masini> tempList = new List<Models.FirmaCurierat.Masini>();
            coordsList = await dataHelper.LoadData<Models.FirmaCurierat.Dispeceri, dynamic>(sqlCommand, new { }, ConnectionString);
             sqlCommand = "select * from  masini";
-          carsList = await dataHelper.LoadData<Models.FirmaCurierat.Masini, dynamic>(sqlCommand, new { }, ConnectionString);
+          tempList = await dataHelper.LoadData<Models.FirmaCurierat.Masini, dynamic>(sqlCommand, new { }, ConnectionString);
+            sqlCommand = "select id_masina from soferi";
+            List<int> forSorting = new List<int>();
+            forSorting = await dataHelper.LoadData<int, dynamic>(sqlCommand, new { }, ConnectionString);
+            carsList = tempList.Where(i => forSorting.Contains(i.id_masina) == false).ToList();
         }
 
         public async Task register(MouseEventArgs args)
