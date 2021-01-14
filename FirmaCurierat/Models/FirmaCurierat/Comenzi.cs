@@ -43,5 +43,10 @@ namespace FirmaCurierat.Models.FirmaCurierat
             get;
             set;
         }
+        public int id_sofer
+        {
+            get;
+            set;
+        }
     }
 }
