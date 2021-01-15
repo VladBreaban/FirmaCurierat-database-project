@@ -72,6 +72,19 @@
                         </div>
                     </ContentTemplate>
                 </AccordionItem>
+                <AccordionItem Header="Add a car" IconCss="e-icons e-info">
+                    <ContentTemplate>
+                        <div style="margin-bottom: 1rem" class="row">
+                            <div class="col-md-2">
+                                <RadzenLabel Component="add_Car" style="font-weight: 500; font-size: medium;" Text="Click here to add a car">
+                                </RadzenLabel>
+                            </div>
+                            <div class="col-md-1" style="margin-left:-30px;">
+                                <SfButton CssClass="e-success" IconCss="e-icons e-info" OnClick="@registerCar">Add</SfButton>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </AccordionItem>
             </AccordionItems>
         </SfAccordion>
         <RadzenChart>

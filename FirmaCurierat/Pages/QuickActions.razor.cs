@@ -43,6 +43,10 @@ namespace FirmaCurierat.Pages
         {
             DialogService.OpenAsync<Requested>("The most valuable orders");
         }
+        public async Task registerCar(MouseEventArgs args)
+        {
+            DialogService.OpenAsync<AddCar>("Register new car");
+        }
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
         {
             dataHelper = new DataBaseManagement.DataManagement();
