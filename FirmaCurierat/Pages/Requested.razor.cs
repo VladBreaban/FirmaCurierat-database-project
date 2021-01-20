@@ -60,9 +60,9 @@ namespace FirmaCurierat.Pages
                                                Integrated Security = SSPI", ServerName, database);
 
 
-            string sqlCommand = "select a.nume, b.awb, b.valoare_comanda from clienti a " +
-                "inner join comenzi b on a.id_client = b.id_client where b.valoare_comanda >= ( select avg(valoare_comanda) from comenzi) order by " +
-                "b.valoare_comanda asc";
+                               string sqlCommand = "select a.nume, b.awb, b.valoare_comanda from clienti a " +
+                                             "inner join comenzi b on a.id_client = b.id_client where b.valoare_comanda >= ( select avg(valoare_comanda) from comenzi) order by " +
+                                                "b.valoare_comanda asc";
             interestList = await dataHelper.LoadData<infoForTheGrid, dynamic>(sqlCommand, new { }, ConnectionString);
             sqlCommand = "select a.marca,b.valoare_comanda from masini a inner join soferi c on a.id_masina = c.id_masina inner join comenzi b on b.valoare_comanda >= (select max(valoare_comanda) from comenzi) ";
             interestList2 = await dataHelper.LoadData<infoForTheGrid2, dynamic>(sqlCommand, new { }, ConnectionString);
