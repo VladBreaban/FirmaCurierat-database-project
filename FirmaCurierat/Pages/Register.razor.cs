@@ -26,9 +26,10 @@ namespace FirmaCurierat.Pages
         {
             client = new Models.FirmaCurierat.Clienti();
         }
+
         public async Task registerUser(MouseEventArgs args)
         {
-
+            //verific sa nu am informatii necompletate
             if(client.nume!=""  && client. prenume != "" && username!="" && password!="")
             {
                 SqlConnection scn = new SqlConnection();
@@ -37,7 +38,7 @@ namespace FirmaCurierat.Pages
                 string database = "CurieratVladProiect";
                 string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
                                                Integrated Security = SSPI", ServerName, database);
-
+                //inserez in baza de date cu info specificate de user
                 scn.ConnectionString = ConnectionString;
                 SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail) values (@nam,@pre,@adr,@mail)", scn);
                 scmd.Parameters.Clear();
@@ -49,7 +50,9 @@ namespace FirmaCurierat.Pages
                 try
                 {
                     scn.Open();
+                    //executa comanda
                     scmd.ExecuteNonQuery();
+                    //insereaza si in tabelul de login
                     SqlCommand scmd2= new SqlCommand("insert into login_database (username,password,id_client) values (@user,@pass,@id)", scn);
                     SqlCommand scmd3= new SqlCommand("select id_client from clienti where adresa=@adr", scn);
                     scmd3.Parameters.AddWithValue("@adr", client.adresa);

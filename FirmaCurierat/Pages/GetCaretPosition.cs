@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace FirmaCurierat.Pages
-{
+{ // clasa pentru inserare awb la cursor
     public class GetCaretPosition
     {
         private readonly IJSRuntime jsRuntime;

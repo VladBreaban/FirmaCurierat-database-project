@@ -31,6 +31,7 @@ namespace FirmaCurierat.Pages
         }
         protected async Task loadClientsandOrders()
         {
+            //initializare liste 
             tip = new List<Models.FirmaCurierat.TipComenzi>();
             tip_selected = new Models.FirmaCurierat.TipComenzi();
             comenzi = new List<Models.FirmaCurierat.Comenzi>();
@@ -49,6 +50,7 @@ namespace FirmaCurierat.Pages
            // string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
 
             comanda = new Models.FirmaCurierat.Comenzi();
+            //selecteaza comenzile clientului cu id-ul cliend_id
             SqlCommand scmd = new SqlCommand("select * from  comenzi where id_client = @id", scn);
             scmd.Parameters.Clear();
 
@@ -56,7 +58,7 @@ namespace FirmaCurierat.Pages
 
             using (SqlDataReader reader = scmd.ExecuteReader())
             {
-
+                //ia informatiile despre comanda
                 if (reader.Read())
                 {
                     comanda.awb = (string)reader["awb"];
@@ -67,16 +69,18 @@ namespace FirmaCurierat.Pages
 
                 }
             }
+            //selectam id-ul tipului comenzii
             scmd = new SqlCommand("select id_tip from tipul_comenzii where id_comanda = @id;;SELECT SCOPE_IDENTITY()", scn);
             scmd.Parameters.AddWithValue("@id", comanda.id_comanda);
             int tip_id = Convert.ToInt32(scmd.ExecuteScalar());
+            //selectam tipul comenzii
             scmd = new SqlCommand("select * from tip_comenzi where id_tip = @id", scn);
             scmd.Parameters.Clear();
             scmd.Parameters.AddWithValue("@id", tip_id);
           
             using (SqlDataReader reader = scmd.ExecuteReader())
             {
-
+                //luam datele despre tip si specificatiile
                 if (reader.Read())
                 {
                  tip_selected.id_tip = (int)reader["id_tip"];
@@ -105,6 +109,7 @@ namespace FirmaCurierat.Pages
 
 
         }
+        //functie pt update order
         protected async Task updateOrder()
         {
             SqlConnection scn = new SqlConnection();

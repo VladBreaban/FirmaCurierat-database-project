@@ -148,8 +148,14 @@ namespace FirmaCurierat.Pages
         {
             try
             {
+                //functie de update
+                string ServerName = Environment.MachineName;
+
+                string database = "CurieratVladProiect";
+                string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
                 SqlConnection scn = new SqlConnection();
-                scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+                scn.ConnectionString = ConnectionString;
                 SqlCommand scmd = new SqlCommand("update clienti SET nume = @nam, prenume = @pre, adresa= @adr, mail = @mail where id_client = @id", scn);
                 scmd.Parameters.Clear();
 

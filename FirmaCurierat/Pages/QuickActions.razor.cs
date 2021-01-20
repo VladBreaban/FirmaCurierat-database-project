@@ -22,6 +22,7 @@ namespace FirmaCurierat.Pages
             get;
             set;
         }
+        //serie de functii pentru navigare in diferite pagini
         public List<Models.FirmaCurierat.Comenzi> comenzi;
         public async Task viewDrivers(MouseEventArgs args)
         {

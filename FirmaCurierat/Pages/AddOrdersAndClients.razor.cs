@@ -45,19 +45,22 @@ namespace FirmaCurierat.Pages
             string database = "CurieratVladProiect";
             string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
                                                Integrated Security = SSPI", ServerName, database);
-
+            //lista de dispeceri pentur a putea atribuii comenzii
             coordsList = new List<Models.FirmaCurierat.Dispeceri>();
             string sqlCommand = "select * from  dispeceri";
             dataHelper = new DataBaseManagement.DataManagement();
             coordsList = await dataHelper.LoadData<Models.FirmaCurierat.Dispeceri, dynamic>(sqlCommand, new { }, ConnectionString);
+            //ce tipuri de comenzi am
             sqlCommand = "select * from tip_comenzi";
             tip = await dataHelper.LoadData<Models.FirmaCurierat.TipComenzi, dynamic>(sqlCommand, new { }, ConnectionString);
+            //soferii
             sqlCommand = "select * from soferi";
             soferi = await dataHelper.LoadData<Models.FirmaCurierat.Soferi, dynamic>(sqlCommand, new { }, ConnectionString);
 
         }
         protected async Task<bool> verifyAllField()
         {
+            //verific sa fie completat tot
             if (client.nume == null || client.prenume == null || client.adresa == null || client.oras == null || client.mail == null || comanda.data_livrare == null || comanda.awb == null || comanda.id_dispecer == null || tip_selected.id_tip == null)
                 return false;
             else return true;
@@ -74,11 +77,12 @@ namespace FirmaCurierat.Pages
                 }
                 SqlConnection scn = new SqlConnection();
                 string ServerName = Environment.MachineName;
-
+                //connection string general
                 string database = "CurieratVladProiect";
                 string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
                                                Integrated Security = SSPI", ServerName, database);
                 scn.ConnectionString = ConnectionString;
+                //insereaza
                 SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail,oras) values (@nam,@pre,@adr,@mail,@o); SELECT SCOPE_IDENTITY()", scn);
               scmd.Parameters.Clear();
 
@@ -104,7 +108,9 @@ namespace FirmaCurierat.Pages
                 scmd.Parameters.AddWithValue("@id2", tip_selected.id_tip);
 
                 scmd.ExecuteNonQuery();
+                //notifica
                 NotificationService.Notify(NotificationSeverity.Success, $"Order added!");
+                //return la pagina
                 UriHelper.NavigateTo("/clientsandOrders");
             }
             catch(Exception e )

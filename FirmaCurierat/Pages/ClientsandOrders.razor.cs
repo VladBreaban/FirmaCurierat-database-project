@@ -56,7 +56,7 @@ namespace FirmaCurierat.Pages
             {
                 if (await DialogService.Confirm("Do you want to delete this record?") == true)
                 {
-                    
+                    //functie delete client and order
                     FirmaCurierat.Models.FirmaCurierat.Clienti data2 = new Models.FirmaCurierat.Clienti();
                     // drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
                     data2 = (Models.FirmaCurierat.Clienti)data;
@@ -68,14 +68,17 @@ namespace FirmaCurierat.Pages
                                                Integrated Security = SSPI", ServerName, database);
 
                     scn.ConnectionString = ConnectionString;
+                    //selectez comanda care urmeaza sa fie stearsa
                     SqlCommand scmd = new SqlCommand("select id_comanda from comenzi where id_client = @id", scn);
                     scmd.Parameters.Clear();
                     scmd.Parameters.AddWithValue("@id", data2.id_client);
                     scn.Open();
                     int deletType = Convert.ToInt32(scmd.ExecuteScalar());
+                    //sterg din tipul comenzii conform relatiei
                     scmd = new SqlCommand("delete from tipul_comenzii where id_comanda = @id", scn);
                     scmd.Parameters.AddWithValue("@id", deletType);
                     scmd.ExecuteNonQuery();
+                    //sterg din comenzi
                     scmd = new SqlCommand("delete from comenzi where id_comanda = @id", scn);
                     scmd.Parameters.AddWithValue("@id", deletType);
                     scmd.ExecuteNonQuery();
@@ -97,6 +100,7 @@ namespace FirmaCurierat.Pages
                 NotificationService.Notify(NotificationSeverity.Error, $"Error", $"Unable to delete order and client");
             }
         }
+        //functie  pentru a accesa pagna de editare a clientului
         protected async System.Threading.Tasks.Task updateStuff(MouseEventArgs args, object data)
         {
             FirmaCurierat.Models.FirmaCurierat.Clienti data2 = new Models.FirmaCurierat.Clienti();
@@ -106,6 +110,7 @@ namespace FirmaCurierat.Pages
             //var dialogResult = await DialogService.OpenAsync<EditClientandOrder>("Edit Order", new Dictionary<string, object>() { { "client_id", data2.id_client} });
             await InvokeAsync(() => { StateHasChanged(); });
         }
+        //functie pentru accesarea paginii de  editare a comenzii
         protected async System.Threading.Tasks.Task updateOrder(MouseEventArgs args, object data)
         {
             FirmaCurierat.Models.FirmaCurierat.Clienti data2 = new Models.FirmaCurierat.Clienti();

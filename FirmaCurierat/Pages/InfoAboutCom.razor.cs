@@ -64,18 +64,21 @@ namespace FirmaCurierat.Pages
             string database = "CurieratVladProiect";
             string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
                                                Integrated Security = SSPI", ServerName, database);
-
+            //comanda sql folosita
             //select a.nume, a.prenume from soferi a where a.id_dispecer = (select c.id_dispecer from dispeceri c inner join comenzi d on c.id_dispecer = d.id_dispecer where d.awb = '123111' )
             string sqlCommand = "select a.nume_dispecer from dispeceri a where " +
                                " a.id_dispecer = (select c.id_dispecer from dispeceri c inner join comenzi d on c.id_dispecer = d.id_dispecer where d.awb= '" + awb + "' and d.id_client = (select id_client from clienti e where d.id_client = e.id_client ) ) ";
-            
+            //alocare 
             List<string> nume_dispecer = new List<string>();
+            //obtinerea datelor din baza de date
             nume_dispecer = await dataHelper.LoadData<string, dynamic>(sqlCommand, new { }, ConnectionString);
             sqlCommand = "select a.valoare_comanda, a.awb,a.data_livrare from comenzi a where a.awb = '" + awb + "'";
             interestList = await dataHelper.LoadData<infoForTheGrid, dynamic>(sqlCommand, new { }, ConnectionString);
             if(interestList.Count == 0)
             {
+                // notificare
                 NotificationService.Notify(NotificationSeverity.Error, $"Error", $"We do not have an order with this awb");
+                //return la pagina
                 UriHelper.NavigateTo("/user");
             }
             else

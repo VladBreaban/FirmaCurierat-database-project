@@ -54,7 +54,7 @@ namespace FirmaCurierat.Pages
             interestList2 = new List<infoForTheGrid2>();
             dataHelper = new DataBaseManagement.DataManagement();
             string ServerName = Environment.MachineName;
-
+            //interogari complexe
             string database = "CurieratVladProiect";
             string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
                                                Integrated Security = SSPI", ServerName, database);

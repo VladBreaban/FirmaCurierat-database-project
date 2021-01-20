@@ -20,7 +20,7 @@ namespace FirmaCurierat.Pages
         public void insertCar(MouseEventArgs args)
         {
             SqlConnection scn = new SqlConnection();
-          
+           //construiesc connection string general, independet de masina pe care ruleaza porgramul
             string ServerName = Environment.MachineName;
 
             string database = "CurieratVladProiect";
@@ -29,13 +29,17 @@ namespace FirmaCurierat.Pages
            
 
             scn.ConnectionString = ConnectionString;
+            //deschid conexiune
             scn.Open();
+            //inserez masina
             SqlCommand scmd = new SqlCommand("insert into masini (marca,an) values (@marca,@an)", scn);
             scmd.Parameters.Clear();
             scmd.Parameters.AddWithValue("@marca", marca);
             scmd.Parameters.AddWithValue("@an", an);
             scmd.ExecuteNonQuery();
+            //notific autorul
             NotificationService.Notify(NotificationSeverity.Success, $"Car added!");
+            //ma intorc la prima pagina
             UriHelper.NavigateTo("/quickactions");
 
         }

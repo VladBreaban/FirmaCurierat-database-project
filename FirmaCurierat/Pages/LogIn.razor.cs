@@ -51,6 +51,7 @@ namespace FirmaCurierat.Pages
                                                Integrated Security = SSPI", ServerName, database);
 
             scn.ConnectionString = ConnectionString;
+            //verific sa vad daca exista un utilizator cu username si password specificat
             SqlCommand scmd = new SqlCommand("select count (*) as cnt from login_database where username=@usr and password=@pwd", scn);
             scmd.Parameters.Clear();
             scmd.Parameters.AddWithValue("@usr", username);
@@ -61,12 +62,14 @@ namespace FirmaCurierat.Pages
                 scn.Open();
                if( scmd.ExecuteScalar().ToString() == "1" )
                 {
+                    //daca e admit merg la pagina si layout-l de administrare
                     if(username == "admin")
                     {
                         UriHelper.NavigateTo("/quickactions");
                     }
                     else
                     {
+                        //daca nu, merg la layout-ul de user
                         UriHelper.NavigateTo("/user");
                     }
                    

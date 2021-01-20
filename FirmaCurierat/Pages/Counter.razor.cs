@@ -46,7 +46,7 @@ namespace FirmaCurierat.Pages
             get;
             set;
         }
-
+        //functie pentru stergere sofer din baza de date
         protected async System.Threading.Tasks.Task GridDeleteButtonClick(MouseEventArgs args, object data)
         {
             List<Models.FirmaCurierat.Soferi> drivers2 = new List<Models.FirmaCurierat.Soferi>();

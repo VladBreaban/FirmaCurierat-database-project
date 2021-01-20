@@ -44,7 +44,7 @@ namespace FirmaCurierat.Pages
         protected NavigationManager UriHelper { get; set; }
         public List<interestList> interest;
         protected override async System.Threading.Tasks.Task OnInitializedAsync()
-        {
+        {  //initializare datahelper pt a putea accesa functia generica de get a unei liste din baaz de date
             dataHelper = new DataBaseManagement.DataManagement();
             // SqlConnection scn = new SqlConnection();
             string ServerName = Environment.MachineName;
