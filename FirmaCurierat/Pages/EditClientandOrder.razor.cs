@@ -37,7 +37,12 @@ namespace FirmaCurierat.Pages
             clients = new List<Models.FirmaCurierat.Clienti>();
             client = new Models.FirmaCurierat.Clienti();
             SqlConnection scn = new SqlConnection();
-            scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+            scn.ConnectionString = ConnectionString;
             SqlCommand scmd = new SqlCommand("select * from  clienti where id_client = @id", scn);
             scmd.Parameters.Clear();
 
@@ -60,7 +65,7 @@ namespace FirmaCurierat.Pages
             }
             // SqlConnection scn = new SqlConnection();
             // scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
-            string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+           // string ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
 
             comanda = new Models.FirmaCurierat.Comenzi();
             scmd = new SqlCommand("select * from  comenzi where id_client = @id", scn);
@@ -88,7 +93,12 @@ namespace FirmaCurierat.Pages
         {
             dataHelper = new DataBaseManagement.DataManagement();
             SqlConnection scn = new SqlConnection();
-            scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+            string ServerName = Environment.MachineName;
+
+            string database = "CurieratVladProiect";
+            string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+            scn.ConnectionString = ConnectionString;
             coordsList = new List<Models.FirmaCurierat.Dispeceri>();
             string sqlCommand = "select * from  dispeceri";
 

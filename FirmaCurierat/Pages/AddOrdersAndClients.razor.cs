@@ -73,7 +73,12 @@ namespace FirmaCurierat.Pages
                     return;
                 }
                 SqlConnection scn = new SqlConnection();
-                scn.ConnectionString = @"Data Source=DESKTOP-I3NIEPL\SQLEXPRESS;Initial Catalog=login_database;database=CurieratVladProiect;integrated security=SSPI";
+                string ServerName = Environment.MachineName;
+
+                string database = "CurieratVladProiect";
+                string ConnectionString = String.Format(@"Server={0}\SQLEXPRESS;Initial Catalog={1};
+                                               Integrated Security = SSPI", ServerName, database);
+                scn.ConnectionString = ConnectionString;
                 SqlCommand scmd = new SqlCommand("insert into clienti (nume,prenume,adresa,mail,oras) values (@nam,@pre,@adr,@mail,@o); SELECT SCOPE_IDENTITY()", scn);
               scmd.Parameters.Clear();
 
