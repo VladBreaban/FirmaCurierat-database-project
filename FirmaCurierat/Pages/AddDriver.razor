@@ -59,7 +59,7 @@
                                     </RadzenLabel>
                                 </div>
                                 <div class="col-md-3" style="margin-left:-100px; width:380px;">
-                                    <RadzenDropDown Style="width:380px;"  Data="carsList" TextProperty="marca" ValueProperty="id_masina" Placeholder="Select a car" TValue="int"></RadzenDropDown>
+                                    <RadzenDropDown Style="width:380px;" @bind-Value="driver.id_masina"  Data="carsList" TextProperty="marca" ValueProperty="id_masina" Placeholder="Select a car" TValue="int"></RadzenDropDown>
                                    
                                 </div>
                             </div>

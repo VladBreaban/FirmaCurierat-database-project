@@ -49,17 +49,19 @@ namespace FirmaCurierat.Pages
 
         protected async System.Threading.Tasks.Task GridDeleteButtonClick(MouseEventArgs args, object data)
         {
+            List<Models.FirmaCurierat.Soferi> drivers2 = new List<Models.FirmaCurierat.Soferi>();
+            FirmaCurierat.Models.FirmaCurierat.Soferi data2 = new Models.FirmaCurierat.Soferi();
 
+            data2 = (Models.FirmaCurierat.Soferi)data;
+            drivers2 = drivers;
             try
             {
                 if (await DialogService.Confirm("Do you want to delete this record?") == true)
                 {
-                  List<Models.FirmaCurierat.Soferi> drivers2 = new List<Models.FirmaCurierat.Soferi>();
-                    drivers2 = drivers;
+                  
                     drivers = new List<Models.FirmaCurierat.Soferi>();
-                    FirmaCurierat.Models.FirmaCurierat.Soferi data2 = new Models.FirmaCurierat.Soferi();
-                    drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
-                    data2 = (Models.FirmaCurierat.Soferi)data;
+                 
+
                     SqlConnection scn = new SqlConnection();
                     string ServerName = Environment.MachineName;
 
@@ -73,16 +75,19 @@ namespace FirmaCurierat.Pages
                     scmd.Parameters.AddWithValue("@id", data2.id_sofer);
                     scn.Open();
                     scmd.ExecuteNonQuery();
-                    drivers = drivers2;
-                    grid0.Refresh();
-                    this.StateHasChanged();
+                  
                 
                 }
             }
             catch (System.Exception rlvMailerDeleteMailException)
             {
-                NotificationService.Notify(NotificationSeverity.Error, $"Error", $"Unable to delete Mail");
+                NotificationService.Notify(NotificationSeverity.Error, $"Error", $"Driver has orders in delivery!");
+                return;
             }
+            drivers2.RemoveAll(d => d.id_sofer == data2.id_sofer);
+            drivers = drivers2;
+            grid0.Refresh();
+            this.StateHasChanged();
         }
         protected async Task goToAdd(MouseEventArgs args)
         {
